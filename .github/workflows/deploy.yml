@@ -29,11 +29,6 @@ jobs:
           cache: 'npm'
           cache-dependency-path: 'momentous-foto/package-lock.json'
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
-
       - name: Install dependencies
         working-directory: ./momentous-foto
         run: npm ci
