@@ -45,20 +45,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# large files and images (photography portfolio)
-# Uncomment if you want to exclude images from git
-/public/images/clients/**/*.jpg
-/public/images/clients/**/*.jpeg
-/public/images/clients/**/*.png
-/public/images/clients/**/*.JPG
-/public/images/clients/**/*.JPEG
-/public/images/clients/**/*.PNG
-/public/images/services/**/*.jpg
-/public/images/services/**/*.jpeg
-/public/images/services/**/*.png
-/public/images/about/**/*.jpg
-/public/images/about/**/*.png
-
 # macOS
 .DS_Store
 .AppleDouble
