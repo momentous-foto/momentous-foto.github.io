@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: 'Momentous Foto - Photography Portfolio',
   description: 'Professional wedding and event photography with a unique blacky/fade grading aesthetic. Capturing your precious moments since 2021.',
   keywords: ['photography', 'wedding photography', 'event photography', 'Malaysia photographer', 'pre-wedding', 'maternity photography'],
+  icons: {
+    icon: '/images/logo/logo-simple.jpeg',
+  },
 };
 
 export default function RootLayout({
