@@ -3,8 +3,13 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { Suspense } from 'react';
+import LoadingScreen from '../components/LoadingScreen';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Momentous Foto - Photography Portfolio',
@@ -22,9 +27,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+      </head>
       <body className={inter.className} suppressHydrationWarning={true}>
         <Header />
-        <main>{children}</main>
+        <Suspense fallback={<LoadingScreen />}>
+          <main>{children}</main>
+        </Suspense>
         <Footer />
       </body>
     </html>

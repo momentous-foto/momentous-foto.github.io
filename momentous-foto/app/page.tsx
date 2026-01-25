@@ -104,7 +104,7 @@ export default async function Home() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[1400px] mx-auto">
-          {clients.map((client) => (
+          {clients.map((client, idx) => (
             <Link
               key={client.id}
               href={`/client/${client.slug}`}
@@ -116,6 +116,9 @@ export default async function Home() {
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 50vw"
+                priority={idx < 2}
+                loading={idx < 2 ? "eager" : "lazy"}
+                quality={85}
               />
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500" />
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">

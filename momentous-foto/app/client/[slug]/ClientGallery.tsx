@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 interface ClientGalleryProps {
     client: {
@@ -16,6 +17,27 @@ interface ClientGalleryProps {
 export default function ClientGallery({ client, galleryImages }: ClientGalleryProps) {
     const [lightboxOpen, setLightboxOpen] = useState(false);
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set([0, 1, 2]));
+
+    // Preload images as user scrolls
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const index = parseInt(entry.target.getAttribute('data-index') || '0');
+                        setLoadedImages(prev => new Set([...prev, index, index + 1, index + 2]));
+                    }
+                });
+            },
+            { rootMargin: '200px' }
+        );
+
+        const images = document.querySelectorAll('[data-index]');
+        images.forEach(img => observer.observe(img));
+
+        return () => observer.disconnect();
+    }, []);
 
     const openLightbox = (index: number) => {
         setCurrentImageIndex(index);
@@ -78,21 +100,28 @@ export default function ClientGallery({ client, galleryImages }: ClientGalleryPr
                         const imgSrc = isRealImage
                             ? `/images/clients/${client.folderName}/${imgName}`
                             : undefined;
+                        const shouldLoad = loadedImages.has(index);
 
                         return (
                             <div
                                 key={index}
+                                data-index={index}
                                 className="relative w-full overflow-hidden group cursor-pointer"
                                 onClick={() => isRealImage && openLightbox(index)}
                             >
                                 {isRealImage ? (
                                     <>
-                                        <img
-                                            src={imgSrc}
-                                            alt={`Photo ${index + 1}`}
-                                            className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
-                                            loading="lazy"
-                                        />
+                                        {shouldLoad ? (
+                                            <img
+                                                src={imgSrc}
+                                                alt={`Photo ${index + 1}`}
+                                                className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
+                                                loading={index < 3 ? "eager" : "lazy"}
+                                                decoding="async"
+                                            />
+                                        ) : (
+                                            <div className="aspect-[3/4] bg-gray-900 animate-pulse" />
+                                        )}
                                         <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
                                     </>
                                 ) : (
@@ -149,6 +178,8 @@ export default function ClientGallery({ client, galleryImages }: ClientGalleryPr
                             src={`/images/clients/${client.folderName}/${galleryImages[currentImageIndex]}`}
                             alt={`Photo ${currentImageIndex + 1}`}
                             className="max-w-full max-h-[90vh] object-contain"
+                            loading="eager"
+                            decoding="async"
                         />
                     </div>
 

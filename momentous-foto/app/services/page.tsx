@@ -49,7 +49,7 @@ export default async function Services() {
       <section className="py-16 md:py-24">
         <div className="max-w-[1400px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {servicesWithImages.map((service) => (
+            {servicesWithImages.map((service, idx) => (
               <Link
                 key={service.id}
                 href={`/services/${service.slug}`}
@@ -61,6 +61,9 @@ export default async function Services() {
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                   sizes="(max-width: 768px) 100vw, 50vw"
+                  priority={idx < 2}
+                  loading={idx < 2 ? "eager" : "lazy"}
+                  quality={85}
                 />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500" />
                 <div className="absolute inset-0 flex items-center justify-center">
