@@ -184,6 +184,10 @@ export default function Contact() {
         email: '',
         phone: '',
         service: '',
+        date: '',
+        venue: '',
+        remarks: '',
+        honeypot: '',
         imageConsent: false,
       });
       setErrors({
@@ -194,10 +198,6 @@ export default function Contact() {
         date: '',
         venue: '',
         consent: '',
-        phone: '',
-        service: '',
-        date: '',
-        venue: '',
       });
       setStatus('idle');
       setMessage('');
