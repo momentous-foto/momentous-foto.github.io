@@ -37,10 +37,25 @@ jobs:
         working-directory: ./momentous-foto
         run: npm run build
 
+      - name: Install dependencies for Raya
+        working-directory: ./momentous-studio-raya
+        run: npm ci
+
+      - name: Build Raya with Vite
+        working-directory: ./momentous-studio-raya
+        run: npm run build
+
+      - name: Combine builds
+        run: |
+          mkdir -p combined-output
+          cp -r momentous-foto/out/* combined-output/
+          mkdir -p combined-output/momentous-studio-raya
+          cp -r momentous-studio-raya/dist/* combined-output/momentous-studio-raya/
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./momentous-foto/out
+          path: ./combined-output
 
   deploy:
     environment:
