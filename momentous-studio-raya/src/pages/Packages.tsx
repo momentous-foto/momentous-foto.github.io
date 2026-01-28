@@ -2,10 +2,12 @@ import Header from "@/components/booking/Header";
 import Footer from "@/components/booking/Footer";
 import PackageCard from "@/components/booking/PackageCard";
 import { packages } from "@/data/packages";
+import FloatingClouds from "@/components/decorations/FloatingClouds";
 
 const Packages = () => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col relative">
+      <FloatingClouds density="medium" />
       <Header />
       <main className="flex-1 py-16">
         <div className="booking-container animate-fade-in">

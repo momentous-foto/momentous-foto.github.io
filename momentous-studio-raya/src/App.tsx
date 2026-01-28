@@ -16,7 +16,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter basename="/momentous-studio-raya">
+      <BrowserRouter basename={import.meta.env.MODE === 'production' ? '/momentous-studio-raya' : '/'}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/packages" element={<Packages />} />

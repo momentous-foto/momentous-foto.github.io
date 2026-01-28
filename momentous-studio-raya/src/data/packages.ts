@@ -55,16 +55,62 @@ export const availableDates = [
 ];
 
 // Time slots with duration ranges
+// Default time slots (applies to most dates)
 export const timeSlots = [
-  { time: "09:00AM - 09:20AM", available: true },
-  { time: "09:30AM - 09:50AM", available: true },
-  { time: "10:00AM - 10:20AM", available: true },
-  { time: "10:30AM - 10:50AM", available: true },
-  { time: "11:00AM - 11:20AM", available: true },
-  { time: "11:30AM - 11:50AM", available: true },
-  { time: "12:00PM - 12:20PM", available: true },
-  { time: "12:30PM - 12:50PM", available: true },
+  { time: "09:00AM - 09:15AM", available: true },
+  { time: "09:20AM - 09:35AM", available: true },
+  { time: "09:40AM - 09:55AM", available: true },
+
+  { time: "10:00AM - 10:15AM", available: true },
+  { time: "10:20AM - 10:35AM", available: true },
+  { time: "10:40AM - 10:55AM", available: true },
+
+  { time: "11:00AM - 11:15AM", available: true },
+  { time: "11:20AM - 11:35AM", available: true },
+  { time: "11:40AM - 11:55AM", available: true },
+
+  { time: "12:00PM - 12:15PM", available: true },
+  { time: "12:20PM - 12:35PM", available: true },
+  { time: "12:40PM - 12:55PM", available: true },
+
+  { time: "01:00PM - 01:15PM", available: true },
+  { time: "01:20PM - 01:35PM", available: true },
+  { time: "01:40PM - 01:55PM", available: true },
+
+  { time: "02:00PM - 02:15PM", available: true },
 ];
+
+// Extended time slots (only for 14/3/2026 and 15/3/2026)
+export const extendedTimeSlots = [
+  { time: "02:20PM - 02:35PM", available: true },
+  { time: "02:40PM - 02:55PM", available: true },
+
+  { time: "03:00PM - 03:15PM", available: true },
+  { time: "03:20PM - 03:35PM", available: true },
+  { time: "03:40PM - 03:55PM", available: true },
+
+  { time: "04:00PM - 04:15PM", available: true },
+  { time: "04:20PM - 04:35PM", available: true },
+  { time: "04:40PM - 04:55PM", available: true },
+];
+
+// Dates with extended hours (14/3/2026 and 15/3/2026)
+export const extendedHourDates = [
+  new Date(2026, 2, 14).toDateString(), // 14/3/2026
+  new Date(2026, 2, 15).toDateString(), // 15/3/2026
+];
+
+// Helper function to get time slots for a specific date
+export const getTimeSlotsForDate = (date: Date): typeof timeSlots => {
+  const dateString = date.toDateString();
+  const isExtendedDate = extendedHourDates.includes(dateString);
+  
+  if (isExtendedDate) {
+    return [...timeSlots, ...extendedTimeSlots];
+  }
+  
+  return timeSlots;
+};
 
 // ============================================
 // BOOKING MANAGEMENT - SUPER SIMPLE!

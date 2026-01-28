@@ -7,6 +7,7 @@ import DateTimePicker from "@/components/booking/DateTimePicker";
 import CustomerForm from "@/components/booking/CustomerForm";
 import BookingSummary from "@/components/booking/BookingSummary";
 import PaxCounter from "@/components/booking/PaxCounter";
+import FloatingClouds from "@/components/decorations/FloatingClouds";
 import { Button } from "@/components/ui/button";
 import { useBooking } from "@/hooks/useBooking";
 import { useToast } from "@/hooks/use-toast";
@@ -145,7 +146,8 @@ const Booking = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col relative">
+      <FloatingClouds density="light" />
       <Header />
       <main className="flex-1 py-12">
         <div className="booking-container">

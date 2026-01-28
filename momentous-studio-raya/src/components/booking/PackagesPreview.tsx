@@ -6,9 +6,9 @@ import { Button } from "@/components/ui/button";
 
 const PackagesPreview = () => {
   return (
-    <section className="py-20 bg-muted/30">
+    <section className="py-12 bg-muted/30">
       <div className="booking-container">
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
           <span className="text-sm font-medium tracking-widest uppercase text-accent">
             Raya Packages
           </span>
@@ -23,7 +23,7 @@ const PackagesPreview = () => {
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 max-w-3xl mx-auto mb-10">
+        <div className="grid gap-6 md:grid-cols-2 max-w-3xl mx-auto mb-8">
           {packages.map((pkg, index) => (
             <PackageCard key={pkg.id} pkg={pkg} featured={index === 1} />
           ))}

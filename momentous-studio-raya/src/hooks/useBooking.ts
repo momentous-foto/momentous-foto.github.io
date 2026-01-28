@@ -1,7 +1,7 @@
 import { useState, useCallback, useMemo, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { BookingDetails, Package } from "@/types/booking";
-import { packages, timeSlots, bookedSlots, pendingSlots } from "@/data/packages";
+import { packages, getTimeSlotsForDate, bookedSlots, pendingSlots } from "@/data/packages";
 import { format } from "date-fns";
 import { fetchBookingsFromSheet, getBookingStatus } from "@/utils/sheets";
 
@@ -84,13 +84,16 @@ export const useBooking = () => {
 
   // Get available time slots for selected date
   const availableTimeSlots = useMemo(() => {
-    if (!booking.date) return timeSlots;
+    if (!booking.date) return getTimeSlotsForDate(new Date());
 
     const dateStr = format(booking.date, "yyyy-MM-dd");
     console.log("🗓️ Selected date:", dateStr);
     console.log("📋 Sheet bookings:", sheetBookings);
     
-    return timeSlots.map(slot => {
+    // Get the correct time slots for this date (includes extended hours if applicable)
+    const timeSlotsForDate = getTimeSlotsForDate(booking.date);
+    
+    return timeSlotsForDate.map(slot => {
       // Check Google Sheets first
       const sheetStatus = getBookingStatus(sheetBookings, booking.date!, slot.time);
       console.log(`Slot ${slot.time}: sheetStatus = ${sheetStatus}`);

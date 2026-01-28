@@ -3,6 +3,7 @@ import { format } from "date-fns";
 import { CheckCircle, Calendar, ArrowRight, Home, Users, MessageCircle, AlertCircle } from "lucide-react";
 import Header from "@/components/booking/Header";
 import Footer from "@/components/booking/Footer";
+import FloatingClouds from "@/components/decorations/FloatingClouds";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -63,7 +64,8 @@ const Confirmation = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col relative">
+      <FloatingClouds density="medium" />
       <Header />
       <main className="flex-1 py-16">
         <div className="booking-container max-w-2xl mx-auto text-center animate-fade-in">
