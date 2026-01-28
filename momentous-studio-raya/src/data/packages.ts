@@ -7,7 +7,7 @@ export const packages: Package[] = [
     description: "Studio rental only — bring your own device and capture your Raya moments!",
     duration: "15 minutes",
     photos: 0,
-    price: 69,
+    price: 68,
     features: [
       "15 minutes session",
       "Studio rental only",
