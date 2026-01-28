@@ -15,6 +15,10 @@ const GallerySection = () => {
         src={getImagePath('images/icons/cloud (1).png')}
         alt="" 
         loading="lazy"
+        className="absolute bottom-20 right-10 w-28 opacity-25 animate-float pointer-events-none" 
+        style={{animation: 'float 11s ease-in-out infinite 2s'}} 
+      />
+
       <div className="max-w-6xl mx-auto">
         {/* Combined Section Title */}
         <div className="text-center mb-10 animate-fade-in">
