@@ -1,3 +1,5 @@
+import { getImagePath } from '@/utils/imagePath';
+
 interface CloudProps {
   src: string;
   size: number;
@@ -32,9 +34,9 @@ interface FloatingCloudsProps {
 
 const FloatingClouds = ({ density = 'medium' }: FloatingCloudsProps) => {
   const cloudImages = [
-    '/images/icons/cloud (1).png',
-    '/images/icons/cloud (2).png',
-    '/images/icons/cloud (3).png',
+    getImagePath('images/icons/cloud (1).png'),
+    getImagePath('images/icons/cloud (2).png'),
+    getImagePath('images/icons/cloud (3).png'),
   ];
 
   // Cloud configurations based on density

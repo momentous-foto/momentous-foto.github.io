@@ -1,20 +1,20 @@
+import { getImagePath } from '@/utils/imagePath';
+
 const GallerySection = () => {
   return (
     <section className="relative py-16 px-6 bg-[#F5EDD8] overflow-hidden">
       {/* Decorative clouds */}
       <img 
-        src="/images/icons/cloud (2).png" 
+        src={getImagePath('images/icons/cloud (2).png')} 
         alt="" 
+        loading="lazy"
         className="absolute top-10 left-10 w-32 opacity-30 animate-float pointer-events-none" 
         style={{animation: 'float 9s ease-in-out infinite'}} 
       />
       <img 
-        src="/images/icons/cloud (1).png" 
+        src={getImagePath('images/icons/cloud (1).png')}
         alt="" 
-        className="absolute bottom-20 right-10 w-28 opacity-25 animate-float pointer-events-none" 
-        style={{animation: 'float 11s ease-in-out infinite 2s'}} 
-      />
-
+        loading="lazy"
       <div className="max-w-6xl mx-auto">
         {/* Combined Section Title */}
         <div className="text-center mb-10 animate-fade-in">
@@ -57,8 +57,10 @@ const GallerySection = () => {
           {/* Large image - top left */}
           <div className="col-span-12 md:col-span-7 row-span-7 md:row-span-8 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group">
             <img 
-              src="/images/1.jpeg" 
+              src={getImagePath('images/1.jpeg')} 
               alt="Studio setup 1" 
+              loading="eager"
+              fetchPriority="high"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
           </div>
@@ -66,8 +68,9 @@ const GallerySection = () => {
           {/* Medium image - top right */}
           <div className="col-span-6 md:col-span-5 row-span-5 md:row-span-4 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group">
             <img 
-              src="/images/2.jpeg" 
+              src={getImagePath('images/2.jpeg')} 
               alt="Studio setup 2" 
+              loading="lazy"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
           </div>
@@ -75,8 +78,9 @@ const GallerySection = () => {
           {/* Small image - middle right */}
           <div className="col-span-6 md:col-span-5 row-span-4 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group">
             <img 
-              src="/images/3.jpeg" 
+              src={getImagePath('images/3.jpeg')} 
               alt="Studio setup 3" 
+              loading="lazy"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
           </div>
@@ -84,8 +88,9 @@ const GallerySection = () => {
           {/* Medium tall image - bottom left */}
           <div className="col-span-6 md:col-span-4 row-span-5 md:row-span-4 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group">
             <img 
-              src="/images/4.jpeg" 
+              src={getImagePath('images/4.jpeg')} 
               alt="Studio setup 4" 
+              loading="lazy"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
           </div>
@@ -93,8 +98,9 @@ const GallerySection = () => {
           {/* Wide image - bottom center */}
           <div className="col-span-6 md:col-span-8 row-span-3 md:row-span-4 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group">
             <img 
-              src="/images/5.jpeg" 
+              src={getImagePath('images/5.jpeg')} 
               alt="Studio setup 5" 
+              loading="lazy"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
           </div>

@@ -1,14 +1,15 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { getImagePath } from '@/utils/imagePath';
 
 const Hero = () => {
   return (
     <section className="relative py-20 md:py-32 flex flex-col items-center justify-center overflow-hidden bg-[#F5EDD8] px-4">
         {/* Playful Animated Elements */}
-        <img src="/images/icons/cloud (1).png" alt="" className="absolute top-10 right-10 w-24 opacity-50 animate-float pointer-events-none" style={{animation: 'float 6s ease-in-out infinite'}} />
-        <img src="/images/icons/cloud (2).png" alt="" className="absolute top-32 left-16 w-32 opacity-40 animate-float pointer-events-none" style={{animation: 'float 8s ease-in-out infinite 2s'}} />
-        <img src="/images/icons/cloud (3).png" alt="" className="absolute top-20 left-1/2 w-20 opacity-35 animate-float pointer-events-none" style={{animation: 'float 7s ease-in-out infinite 1s'}} />
+        <img src={getImagePath('images/icons/cloud (1).png')} alt="" loading="lazy" className="absolute top-10 right-10 w-24 opacity-50 animate-float pointer-events-none" style={{animation: 'float 6s ease-in-out infinite'}} />
+        <img src={getImagePath('images/icons/cloud (2).png')} alt="" loading="lazy" className="absolute top-32 left-16 w-32 opacity-40 animate-float pointer-events-none" style={{animation: 'float 8s ease-in-out infinite 2s'}} />
+        <img src={getImagePath('images/icons/cloud (3).png')} alt="" loading="lazy" className="absolute top-20 left-1/2 w-20 opacity-35 animate-float pointer-events-none" style={{animation: 'float 7s ease-in-out infinite 1s'}} />
         <div className="absolute bottom-20 right-24 text-4xl opacity-35 animate-float" style={{animation: 'float 10s ease-in-out infinite 4s'}}>
           ✨
         </div>
@@ -25,8 +26,10 @@ const Hero = () => {
             {/* Logo Image */}
             <div className="relative inline-block mb-4">
               <img 
-                src="/images/logo/logo.png" 
+                src={getImagePath('images/logo/logo.png')} 
                 alt="Momentous Studio Raya" 
+                loading="eager"
+                fetchPriority="high"
                 className="w-[300px] md:w-[400px] lg:w-[650px] h-auto mx-auto drop-shadow-xl"
                 style={{
                   filter: 'drop-shadow(3px 3px 8px rgba(107, 75, 154, 0.3))'
