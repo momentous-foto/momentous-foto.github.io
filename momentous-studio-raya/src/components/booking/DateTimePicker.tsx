@@ -86,7 +86,7 @@ const DateTimePicker = ({
       <div className="bg-secondary/30 p-6 rounded-xl border border-secondary">
         <h3 className="font-bold text-lg mb-5">Select Time Slot</h3>
         {selectedDate ? (
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3">
             {timeSlots.map((slot) => (
               <Button
                 key={slot.time}
@@ -94,7 +94,7 @@ const DateTimePicker = ({
                 disabled={!slot.available}
                 onClick={() => onTimeChange(slot.time)}
                 className={cn(
-                  "h-14 text-base font-semibold transition-all duration-300 hover:scale-105 relative",
+                  "h-11 sm:h-14 text-sm sm:text-base font-semibold transition-all duration-300 hover:scale-105 relative",
                   selectedTime === slot.time
                     ? "bg-accent text-primary-foreground border-accent shadow-md scale-105"
                     : slot.status === "pending"
@@ -107,10 +107,10 @@ const DateTimePicker = ({
                 <div className="flex flex-col items-center gap-0.5">
                   <span>{slot.time}</span>
                   {slot.status === "pending" && (
-                    <span className="text-[10px] font-medium">PENDING</span>
+                    <span className="text-[9px] sm:text-[10px] font-medium">PENDING</span>
                   )}
                   {slot.status === "booked" && (
-                    <span className="text-[10px] font-medium">SOLD OUT</span>
+                    <span className="text-[9px] sm:text-[10px] font-medium">SOLD OUT</span>
                   )}
                 </div>
               </Button>
