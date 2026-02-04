@@ -20,6 +20,8 @@ export interface BookingDetails {
   date: Date | null;
   time: string | null;
   pax: number;
+  adultAddOns: number;
+  kidAddOns: number;
   customerName: string;
   customerEmail: string;
   customerPhone: string;

@@ -32,6 +32,8 @@ const Booking = () => {
     updateCustomerPhone,
     updateNotes,
     updatePax,
+    updateAdultAddOns,
+    updateKidAddOns,
     updateImageConsent,
     nextStep,
     prevStep,
@@ -96,7 +98,11 @@ const Booking = () => {
               />
               <PaxCounter
                 pax={booking.pax}
+                adultAddOns={booking.adultAddOns}
+                kidAddOns={booking.kidAddOns}
                 onPaxChange={updatePax}
+                onAdultAddOnsChange={updateAdultAddOns}
+                onKidAddOnsChange={updateKidAddOns}
               />
             </div>
           </div>

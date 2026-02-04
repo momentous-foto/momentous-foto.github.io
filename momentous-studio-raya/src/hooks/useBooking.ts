@@ -17,6 +17,8 @@ export const useBooking = () => {
     date: null,
     time: null,
     pax: 1,
+    adultAddOns: 0,
+    kidAddOns: 0,
     customerName: "",
     customerEmail: "",
     customerPhone: "",
@@ -76,6 +78,14 @@ export const useBooking = () => {
 
   const updatePax = useCallback((pax: number) => {
     setBooking((prev) => ({ ...prev, pax }));
+  }, []);
+
+  const updateAdultAddOns = useCallback((adultAddOns: number) => {
+    setBooking((prev) => ({ ...prev, adultAddOns }));
+  }, []);
+
+  const updateKidAddOns = useCallback((kidAddOns: number) => {
+    setBooking((prev) => ({ ...prev, kidAddOns }));
   }, []);
 
   const updateImageConsent = useCallback((consent: boolean) => {
@@ -184,6 +194,8 @@ export const useBooking = () => {
     updateCustomerPhone,
     updateNotes,
     updatePax,
+    updateAdultAddOns,
+    updateKidAddOns,
     updateImageConsent,
     nextStep,
     prevStep,

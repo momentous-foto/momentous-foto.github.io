@@ -124,10 +124,17 @@ const Confirmation = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Number of People</p>
-                  <p className="font-semibold flex items-center gap-1">
-                    <Users className="h-4 w-4" />
-                    {booking.pax} pax
-                  </p>
+                  <div className="font-semibold">
+                    <p className="flex items-center gap-1">
+                      <Users className="h-4 w-4" />
+                      {booking.pax + booking.adultAddOns + booking.kidAddOns} people total
+                    </p>
+                    <div className="text-xs text-muted-foreground mt-1 space-y-0.5">
+                      <p>• Base: {booking.pax} pax</p>
+                      {booking.adultAddOns > 0 && <p>• Adults: +{booking.adultAddOns}</p>}
+                      {booking.kidAddOns > 0 && <p>• Kids: +{booking.kidAddOns} (FREE)</p>}
+                    </div>
+                  </div>
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Date</p>

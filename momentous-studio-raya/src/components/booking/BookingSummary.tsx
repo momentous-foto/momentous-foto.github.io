@@ -11,9 +11,8 @@ interface BookingSummaryProps {
 
 const BookingSummary = ({ booking }: BookingSummaryProps) => {
   const totalPrice = calculateTotalPrice(booking);
-  const basePax = 4;
-  const extraPax = Math.max(0, booking.pax - basePax);
-  const extraCost = extraPax * 10;
+  const adultAddOnsCost = booking.adultAddOns * 10;
+  const totalPeople = booking.pax + booking.adultAddOns + booking.kidAddOns;
 
   return (
     <Card className="max-w-xl mx-auto animate-fade-in">
@@ -46,13 +45,26 @@ const BookingSummary = ({ booking }: BookingSummaryProps) => {
             <Users className="h-4 w-4" />
             <span>Number of People</span>
           </div>
-          <div className="pl-6">
-            <p className="font-medium">{booking.pax} pax</p>
-            {extraPax > 0 && (
-              <p className="text-sm text-muted-foreground">
-                +{extraPax} extra pax @ RM10 each = +RM{extraCost}
-              </p>
+          <div className="pl-6 space-y-2">
+            <div>
+              <p className="font-medium">Base package: {booking.pax} pax</p>
+              <p className="text-xs text-muted-foreground">Included in package price</p>
+            </div>
+            {booking.adultAddOns > 0 && (
+              <div>
+                <p className="text-sm">Adult add-ons: +{booking.adultAddOns} pax</p>
+                <p className="text-xs text-accent font-semibold">+RM{adultAddOnsCost}</p>
+              </div>
             )}
+            {booking.kidAddOns > 0 && (
+              <div>
+                <p className="text-sm">Kids (0-6 years): +{booking.kidAddOns} kids</p>
+                <p className="text-xs text-green-600 font-semibold">FREE</p>
+              </div>
+            )}
+            <div className="pt-2 border-t border-secondary/30">
+              <p className="text-sm font-bold">Total: {totalPeople} people</p>
+            </div>
           </div>
         </div>
 
