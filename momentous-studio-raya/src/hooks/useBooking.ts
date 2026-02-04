@@ -16,6 +16,7 @@ export const useBooking = () => {
     package: preselectedPackage,
     date: null,
     time: null,
+    timeSlots: [],
     pax: 1,
     adultAddOns: 0,
     kidAddOns: 0,
@@ -50,11 +51,15 @@ export const useBooking = () => {
   }, []);
 
   const selectDate = useCallback((date: Date | undefined) => {
-    setBooking((prev) => ({ ...prev, date: date || null, time: null }));
+    setBooking((prev) => ({ ...prev, date: date || null, time: null, timeSlots: [] }));
   }, []);
 
-  const selectTime = useCallback((time: string) => {
-    setBooking((prev) => ({ ...prev, time }));
+  const selectTimeSlots = useCallback((timeSlots: string[]) => {
+    setBooking((prev) => ({ 
+      ...prev, 
+      timeSlots,
+      time: timeSlots.length > 0 ? timeSlots[0] : null // Keep first slot for backward compatibility
+    }));
   }, []);
 
   const updateCustomerName = useCallback((name: string) => {
@@ -166,7 +171,7 @@ export const useBooking = () => {
       case 1:
         return booking.package !== null;
       case 2:
-        return booking.date !== null && booking.time !== null;
+        return booking.date !== null && booking.timeSlots.length > 0;
       case 3:
         return (
           booking.customerName.trim() !== "" &&
@@ -188,7 +193,7 @@ export const useBooking = () => {
     packages,
     selectPackage,
     selectDate,
-    selectTime,
+    selectTimeSlots,
     updateCustomerName,
     updateCustomerEmail,
     updateCustomerPhone,

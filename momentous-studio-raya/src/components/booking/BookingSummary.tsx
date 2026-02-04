@@ -13,6 +13,8 @@ const BookingSummary = ({ booking }: BookingSummaryProps) => {
   const totalPrice = calculateTotalPrice(booking);
   const adultAddOnsCost = booking.adultAddOns * 10;
   const totalPeople = booking.pax + booking.adultAddOns + booking.kidAddOns;
+  const numberOfSlots = booking.timeSlots.length;
+  const packageCost = booking.package ? booking.package.price * numberOfSlots : 0;
 
   return (
     <Card className="max-w-xl mx-auto animate-fade-in">
@@ -34,6 +36,11 @@ const BookingSummary = ({ booking }: BookingSummaryProps) => {
               {booking.package?.duration}
               {booking.package?.photos > 0 && ` • ${booking.package.photos} edited photos`}
             </p>
+            {numberOfSlots > 1 && (
+              <p className="text-sm font-semibold text-accent mt-1">
+                {numberOfSlots} slots × RM{booking.package?.price} = RM{packageCost}
+              </p>
+            )}
           </div>
         </div>
 
@@ -76,14 +83,25 @@ const BookingSummary = ({ booking }: BookingSummaryProps) => {
             <Calendar className="h-4 w-4" />
             <span>Date & Time</span>
           </div>
-          <div className="pl-6 flex items-center gap-4">
+          <div className="pl-6 space-y-2">
             <p className="font-medium">
               {booking.date ? format(booking.date, "EEEE, MMMM d, yyyy") : "—"}
             </p>
-            <div className="flex items-center gap-1 text-muted-foreground">
-              <Clock className="h-4 w-4" />
-              <span>{booking.time || "—"}</span>
-            </div>
+            {booking.timeSlots.length > 0 ? (
+              <div className="space-y-1">
+                {booking.timeSlots.map((slot, index) => (
+                  <div key={index} className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <Clock className="h-4 w-4" />
+                    <span>Slot {index + 1}: {slot}</span>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="flex items-center gap-1 text-muted-foreground">
+                <Clock className="h-4 w-4" />
+                <span>—</span>
+              </div>
+            )}
           </div>
         </div>
 

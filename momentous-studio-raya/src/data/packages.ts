@@ -18,6 +18,7 @@ export const packages: Package[] = [
       "Add on adults: RM10/pax (max 6 add-ons)",
       "Kids (0-6 years) FREE - just mention how many",
       "Max total: 10 people per session",
+      "Book multiple slots: +RM68 per extra slot",
     ],
   },
   {
@@ -38,6 +39,7 @@ export const packages: Package[] = [
       "Add on adults: RM10/pax (max 6 add-ons)",
       "Kids (0-6 years) FREE - just mention how many",
       "Max total: 10 people per session",
+      "Book multiple slots: +RM99 per extra slot",
     ],
   },
 ];

@@ -18,7 +18,8 @@ export interface TimeSlot {
 export interface BookingDetails {
   package: Package | null;
   date: Date | null;
-  time: string | null;
+  time: string | null; // Kept for backward compatibility
+  timeSlots: string[]; // Array of selected time slots
   pax: number;
   adultAddOns: number;
   kidAddOns: number;

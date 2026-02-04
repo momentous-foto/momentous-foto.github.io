@@ -24,11 +24,11 @@ const Confirmation = () => {
   }
 
   const generateCalendarLink = () => {
-    if (!booking.date || !booking.time) return "#";
+    if (!booking.date || booking.timeSlots.length === 0) return "#";
     
     try {
       // Parse time - handle format like "09:00AM - 09:20AM"
-      const timeStr = booking.time.split(" - ")[0]; // Get start time
+      const timeStr = booking.timeSlots[0].split(" - ")[0]; // Get start time of first slot
       const timeMatch = timeStr.match(/(\d+):(\d+)(AM|PM)/);
       
       if (!timeMatch) return "#";
@@ -44,8 +44,8 @@ const Confirmation = () => {
       const startDate = new Date(booking.date);
       startDate.setHours(hours, minutes, 0, 0);
       
-      // Duration is 15 minutes for both packages
-      const durationMinutes = 15;
+      // Duration is 15 minutes per slot, multiply by number of slots
+      const durationMinutes = 15 * booking.timeSlots.length;
       const endDate = new Date(startDate.getTime() + durationMinutes * 60000);
       
       const formatGoogleDate = (date: Date) =>
@@ -53,7 +53,7 @@ const Confirmation = () => {
       
       const title = encodeURIComponent(`Raya Photo Session - ${booking.package?.name}`);
       const details = encodeURIComponent(
-        `Raya photoshoot session at Momentous Studio Raya\n\nPackage: ${booking.package?.name}\nDuration: ${booking.package?.duration}\n\nLocation: Kuala Lumpur, Malaysia\nContact: +60 10-447 1403`
+        `Raya photoshoot session at Momentous Studio Raya\n\nPackage: ${booking.package?.name}\n${booking.timeSlots.length > 1 ? `Slots: ${booking.timeSlots.length} x 15 min\n` : ''}Duration: ${booking.package?.duration}\n\nLocation: Kuala Lumpur, Malaysia\nContact: +60 10-447 1403`
       );
       
       return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${formatGoogleDate(startDate)}/${formatGoogleDate(endDate)}&details=${details}`;
@@ -121,6 +121,11 @@ const Confirmation = () => {
                 <div>
                   <p className="text-sm text-muted-foreground">Package</p>
                   <p className="font-semibold">{booking.package?.name}</p>
+                  {booking.timeSlots.length > 1 && (
+                    <p className="text-xs text-accent font-semibold mt-1">
+                      {booking.timeSlots.length} slots booked
+                    </p>
+                  )}
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Number of People</p>
@@ -145,8 +150,12 @@ const Confirmation = () => {
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Time</p>
-                  <p className="font-semibold">{booking.time}</p>
+                  <p className="text-sm text-muted-foreground">Time Slot{booking.timeSlots.length > 1 ? 's' : ''}</p>
+                  <div className="font-semibold space-y-1">
+                    {booking.timeSlots.map((slot, index) => (
+                      <p key={index} className="text-sm">{index + 1}. {slot}</p>
+                    ))}
+                  </div>
                 </div>
               </div>
               <div className="border-t pt-4 mt-4">

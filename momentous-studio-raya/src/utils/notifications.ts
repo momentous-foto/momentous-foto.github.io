@@ -6,23 +6,38 @@ const STUDIO_WHATSAPP = "60104471403";
 
 export const calculateTotalPrice = (booking: BookingDetails): number => {
   if (!booking.package) return 0;
-  const adultAddOnsCost = booking.adultAddOns * 10; // RM10 per adult add-on
-  return booking.package.price + adultAddOnsCost;
+  const numberOfSlots = booking.timeSlots.length || 1; // At least 1 slot
+  const packageCost = booking.package.price * numberOfSlots; // Multiply package price by number of slots
+  const adultAddOnsCost = booking.adultAddOns * 10; // RM10 per adult add-on (not multiplied by slots)
+  return packageCost + adultAddOnsCost;
 };
 
 export const generateBookingMessage = (booking: BookingDetails): string => {
   const totalPrice = calculateTotalPrice(booking);
   const totalPeople = booking.pax + booking.adultAddOns + booking.kidAddOns;
   const adultAddOnsCost = booking.adultAddOns * 10;
+  const numberOfSlots = booking.timeSlots.length;
+  const packageCost = booking.package ? booking.package.price * numberOfSlots : 0;
   
   let message = `*NEW BOOKING REQUEST*\n`;
   message += `_Momentous Studio Raya_\n\n`;
   message += `*Package:* ${booking.package?.name}\n`;
   message += `*Date:* ${booking.date ? format(booking.date, "EEEE, d MMMM yyyy") : "Not selected"}\n`;
-  message += `*Time:* ${booking.time || "Not selected"}\n\n`;
   
-  // Pax breakdown
-  message += `*PAX DETAILS:*\n`;
+  // Show all time slots
+  if (booking.timeSlots.length > 0) {
+    message += `*Time Slot${numberOfSlots > 1 ? 's' : ''}:*\n`;
+    booking.timeSlots.forEach((slot, index) => {
+      message += `  ${index + 1}. ${slot}\n`;
+    });
+    if (numberOfSlots > 1) {
+      message += `  (${numberOfSlots} slots × RM${booking.package?.price} = RM${packageCost})\n`;
+    }
+  } else {
+    message += `*Time:* Not selected\n`;
+  }
+  
+  message += `\n*PAX DETAILS:*\n`;
   message += `• Base package: ${booking.pax} pax\n`;
   if (booking.adultAddOns > 0) {
     message += `• Adult add-ons: +${booking.adultAddOns} pax (+RM${adultAddOnsCost})\n`;
@@ -59,6 +74,8 @@ export const sendEmailNotification = (booking: BookingDetails): void => {
   const totalPrice = calculateTotalPrice(booking);
   const totalPeople = booking.pax + booking.adultAddOns + booking.kidAddOns;
   const adultAddOnsCost = booking.adultAddOns * 10;
+  const numberOfSlots = booking.timeSlots.length;
+  const packageCost = booking.package ? booking.package.price * numberOfSlots : 0;
   
   const subject = encodeURIComponent(
     `New Booking: ${booking.customerName} - ${booking.date ? format(booking.date, "d MMM yyyy") : ""}`
@@ -67,10 +84,21 @@ export const sendEmailNotification = (booking: BookingDetails): void => {
   let body = `NEW BOOKING REQUEST\n\n`;
   body += `Package: ${booking.package?.name}\n`;
   body += `Date: ${booking.date ? format(booking.date, "EEEE, d MMMM yyyy") : "Not selected"}\n`;
-  body += `Time: ${booking.time || "Not selected"}\n\n`;
   
-  // Pax breakdown
-  body += `PAX DETAILS:\n`;
+  // Show all time slots
+  if (booking.timeSlots.length > 0) {
+    body += `Time Slot${numberOfSlots > 1 ? 's' : ''}:\n`;
+    booking.timeSlots.forEach((slot, index) => {
+      body += `  ${index + 1}. ${slot}\n`;
+    });
+    if (numberOfSlots > 1) {
+      body += `  (${numberOfSlots} slots × RM${booking.package?.price} = RM${packageCost})\n`;
+    }
+  } else {
+    body += `Time: Not selected\n`;
+  }
+  
+  body += `\nPAX DETAILS:\n`;
   body += `• Base package: ${booking.pax} pax\n`;
   if (booking.adultAddOns > 0) {
     body += `• Adult add-ons: +${booking.adultAddOns} pax (+RM${adultAddOnsCost})\n`;

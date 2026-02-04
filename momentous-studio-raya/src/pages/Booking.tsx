@@ -26,7 +26,7 @@ const Booking = () => {
     packages,
     selectPackage,
     selectDate,
-    selectTime,
+    selectTimeSlots,
     updateCustomerName,
     updateCustomerEmail,
     updateCustomerPhone,
@@ -91,9 +91,9 @@ const Booking = () => {
             <div className="max-w-5xl mx-auto space-y-8">
               <DateTimePicker
                 selectedDate={booking.date || undefined}
-                selectedTime={booking.time}
+                selectedTimeSlots={booking.timeSlots}
                 onDateChange={selectDate}
-                onTimeChange={selectTime}
+                onTimeSlotsChange={selectTimeSlots}
                 timeSlots={timeSlots}
               />
               <PaxCounter
