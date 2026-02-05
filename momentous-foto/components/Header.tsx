@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 
 export default function Header() {
@@ -17,11 +18,14 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#1A1A1A]/95 backdrop-blur-sm border-b border-[#6B6B6B]/20">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3 hover:opacity-100">
-          <div className="w-auto h-12 flex items-center justify-center">
-            <img
+          <div className="w-auto h-12 flex items-center justify-center relative">
+            <Image
               src="/images/logo/momentous-foto.png"
               alt="Momentous Foto"
+              width={200}
+              height={48}
               className="h-full w-auto object-contain"
+              priority
             />
           </div>
         </Link>

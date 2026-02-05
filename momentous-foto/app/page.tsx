@@ -118,7 +118,7 @@ export default async function Home() {
                 sizes="(max-width: 768px) 100vw, 50vw"
                 priority={idx < 2}
                 loading={idx < 2 ? "eager" : "lazy"}
-                quality={85}
+                quality={75}
               />
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500" />
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
