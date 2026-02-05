@@ -100,8 +100,11 @@ export const extendedTimeSlots = [
   { time: "04:40PM - 04:55PM", available: true },
 ];
 
-// Dates with extended hours (14/3/2026 and 15/3/2026)
+// Dates with extended hours
 export const extendedHourDates = [
+  new Date(2026, 2, 1).toDateString(),  // 1/3/2026
+  new Date(2026, 2, 7).toDateString(),  // 7/3/2026
+  new Date(2026, 2, 8).toDateString(),  // 8/3/2026
   new Date(2026, 2, 14).toDateString(), // 14/3/2026
   new Date(2026, 2, 15).toDateString(), // 15/3/2026
 ];

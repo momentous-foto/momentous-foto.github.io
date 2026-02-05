@@ -48,10 +48,10 @@ const GallerySection = () => {
               Studio Raya? ✨
             </span>
           </h2>
-          <p className="text-base md:text-lg leading-relaxed text-[#B8956A] font-serif max-w-2xl mx-auto mb-2">
+          <p className="text-base md:text-lg leading-relaxed text-[#6B4E2C] font-serif max-w-2xl mx-auto mb-2">
             Classic garden setting surrounded by natural greenery, warm string lights, vintage elements, and soft lantern lighting — creating an elegant space for capturing meaningful moments.
           </p>
-          <p className="text-sm md:text-base text-[#9B5DA5] font-serif italic">
+          <p className="text-sm md:text-base text-primary font-serif italic">
             A glimpse of our studio
           </p>
         </div>

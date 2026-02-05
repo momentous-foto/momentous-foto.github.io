@@ -40,7 +40,7 @@ const Hero = () => {
             </div>
           </div>
           
-          <p className="text-lg md:text-xl font-serif italic text-[#B8956A] mb-8 flex items-center justify-center gap-2">
+          <p className="text-lg md:text-xl font-serif italic text-[#6B4E2C] mb-8 flex items-center justify-center gap-2">
             <span className="text-2xl">🌿</span>
             A Classic Garden Studio
             <span className="text-2xl">🌿</span>
