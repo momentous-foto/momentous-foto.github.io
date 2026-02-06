@@ -86,8 +86,18 @@ export const timeSlots = [
   { time: "02:00PM - 02:15PM", available: true },
 ];
 
-// Extended time slots (only for 14/3/2026 and 15/3/2026)
-export const extendedTimeSlots = [
+// Extended time slots - Medium hours (until 03:40PM - 03:55PM)
+export const mediumExtendedTimeSlots = [
+  { time: "02:20PM - 02:35PM", available: true },
+  { time: "02:40PM - 02:55PM", available: true },
+
+  { time: "03:00PM - 03:15PM", available: true },
+  { time: "03:20PM - 03:35PM", available: true },
+  { time: "03:40PM - 03:55PM", available: true },
+];
+
+// Extended time slots - Full hours (until 04:40PM - 04:55PM)
+export const fullExtendedTimeSlots = [
   { time: "02:20PM - 02:35PM", available: true },
   { time: "02:40PM - 02:55PM", available: true },
 
@@ -100,10 +110,19 @@ export const extendedTimeSlots = [
   { time: "04:40PM - 04:55PM", available: true },
 ];
 
-// Dates with extended hours
-export const extendedHourDates = [
+// Dates with medium extended hours (until 03:40PM - 03:55PM)
+export const mediumExtendedHourDates = [
+  new Date(2026, 1, 21).toDateString(), // 21/2/2026
+  new Date(2026, 1, 22).toDateString(), // 22/2/2026
+  new Date(2026, 1, 28).toDateString(), // 28/2/2026
   new Date(2026, 2, 1).toDateString(),  // 1/3/2026
   new Date(2026, 2, 7).toDateString(),  // 7/3/2026
+  new Date(2026, 2, 28).toDateString(), // 28/3/2026
+  new Date(2026, 2, 29).toDateString(), // 29/3/2026
+];
+
+// Dates with full extended hours (until 04:40PM - 04:55PM)
+export const fullExtendedHourDates = [
   new Date(2026, 2, 8).toDateString(),  // 8/3/2026
   new Date(2026, 2, 14).toDateString(), // 14/3/2026
   new Date(2026, 2, 15).toDateString(), // 15/3/2026
@@ -112,12 +131,18 @@ export const extendedHourDates = [
 // Helper function to get time slots for a specific date
 export const getTimeSlotsForDate = (date: Date): typeof timeSlots => {
   const dateString = date.toDateString();
-  const isExtendedDate = extendedHourDates.includes(dateString);
   
-  if (isExtendedDate) {
-    return [...timeSlots, ...extendedTimeSlots];
+  // Check if date has full extended hours (until 04:40PM)
+  if (fullExtendedHourDates.includes(dateString)) {
+    return [...timeSlots, ...fullExtendedTimeSlots];
   }
   
+  // Check if date has medium extended hours (until 03:40PM)
+  if (mediumExtendedHourDates.includes(dateString)) {
+    return [...timeSlots, ...mediumExtendedTimeSlots];
+  }
+  
+  // Default time slots only (until 02:00PM)
   return timeSlots;
 };
 
