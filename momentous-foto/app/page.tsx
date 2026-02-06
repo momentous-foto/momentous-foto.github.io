@@ -59,24 +59,19 @@ export default async function Home() {
 
       {/* Raya Special Banner */}
       <section className="px-4 pt-10 pb-4 max-w-[1400px] mx-auto">
-        <div className="relative overflow-hidden rounded-2xl bg-[#F5EDD8] border border-[#6B4B9A]/20 shadow-2xl">
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#E85A5A] rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#D94F8C] rounded-full blur-3xl"></div>
-          </div>
-          
+        <div className="relative overflow-hidden rounded-2xl bg-[#415643] border border-[#C49A6C]/20 shadow-2xl">
           <div className="relative px-8 py-12 md:py-16 text-center">
             <div className="inline-block mb-4">
-              <span className="px-4 py-1.5 bg-[#6B4B9A]/10 border border-[#6B4B9A]/30 rounded-full text-[#6B4B9A] text-xs md:text-sm font-semibold uppercase tracking-wider">
+              <span className="px-4 py-1.5 bg-[#C49A6C]/10 border border-[#C49A6C]/30 rounded-full text-[#C49A6C] text-xs md:text-sm font-semibold uppercase tracking-wider">
                 🌙 Limited Time Offer
               </span>
             </div>
             
-            <h2 className="text-3xl md:text-5xl font-bold text-[#6B4B9A] mb-4">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#fcfcfc] mb-4">
               Hari Raya Special Packages
             </h2>
             
-            <p className="text-[#6B4B9A]/80 text-base md:text-lg mb-8 max-w-2xl mx-auto">
+            <p className="text-[#fcfcfc]/80 text-base md:text-lg mb-8 max-w-2xl mx-auto">
               Capture your festive moments with our exclusive Raya photography packages. 
               Limited slots available!
             </p>
@@ -85,7 +80,7 @@ export default async function Home() {
               href="https://momentous-foto.github.io/momentous-studio-raya"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#D94F8C] hover:bg-[#E85A5A] text-white font-bold rounded-lg transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#C49A6C] hover:bg-[#B08A5C] text-[#415643] font-bold rounded-lg transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl"
             >
               View Raya Packages
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
