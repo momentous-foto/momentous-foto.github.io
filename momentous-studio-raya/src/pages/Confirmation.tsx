@@ -3,7 +3,6 @@ import { format } from "date-fns";
 import { CheckCircle, Calendar, ArrowRight, Home, Users, MessageCircle, AlertCircle } from "lucide-react";
 import Header from "@/components/booking/Header";
 import Footer from "@/components/booking/Footer";
-import FloatingClouds from "@/components/decorations/FloatingClouds";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -65,7 +64,6 @@ const Confirmation = () => {
 
   return (
     <div className="min-h-screen flex flex-col relative">
-      <FloatingClouds density="medium" />
       <Header />
       <main className="flex-1 py-16">
         <div className="booking-container max-w-2xl mx-auto text-center animate-fade-in">
@@ -74,7 +72,7 @@ const Confirmation = () => {
               <CheckCircle className="h-10 w-10 text-accent" />
             </div>
             <h1 className="text-3xl md:text-4xl font-bold mb-4">
-              Almost Done! 🎉
+              Almost Done!
             </h1>
             <p className="text-muted-foreground text-lg">
               Your booking details are ready. Please complete the final step below to confirm your booking.
@@ -85,7 +83,7 @@ const Confirmation = () => {
           <Alert className="mb-6 border-accent/50 bg-accent/5">
             <AlertCircle className="h-5 w-5 text-accent" />
             <AlertDescription className="ml-2">
-              <p className="font-semibold text-foreground mb-2">📱 Important: Complete Your Booking</p>
+              <p className="font-semibold text-foreground mb-2">Important: Complete Your Booking</p>
               <ol className="list-decimal list-inside space-y-1 text-sm">
                 <li>Click the "Send to WhatsApp" button below</li>
                 <li>WhatsApp will open with your booking details pre-filled</li>
@@ -111,7 +109,7 @@ const Confirmation = () => {
           </div>
 
           <div className="mb-4">
-            <h2 className="text-xl font-semibold">📋 Your Booking Summary</h2>
+            <h2 className="text-xl font-semibold">Your Booking Summary</h2>
             <p className="text-sm text-muted-foreground">Review your booking details below</p>
           </div>
 

@@ -2,56 +2,17 @@ import { getImagePath } from '@/utils/imagePath';
 
 const GallerySection = () => {
   return (
-    <section className="relative py-16 px-6 bg-[#F5EDD8] overflow-hidden">
-      {/* Decorative clouds */}
-      <img 
-        src={getImagePath('images/icons/cloud (2).png')} 
-        alt="" 
-        loading="lazy"
-        className="absolute top-10 left-10 w-32 opacity-30 animate-float pointer-events-none" 
-        style={{animation: 'float 9s ease-in-out infinite'}} 
-      />
-      <img 
-        src={getImagePath('images/icons/cloud (1).png')}
-        alt="" 
-        loading="lazy"
-        className="absolute bottom-20 right-10 w-28 opacity-25 animate-float pointer-events-none" 
-        style={{animation: 'float 11s ease-in-out infinite 2s'}} 
-      />
-
+    <section className="relative py-16 px-6 bg-[#415643] overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Combined Section Title */}
         <div className="text-center mb-10 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4 tracking-wide leading-tight"
-              style={{
-                fontFamily: 'Arial Black, sans-serif'
-              }}>
-            <span style={{
-              background: 'linear-gradient(135deg, #9B5DA5 0%, #6B4B9A 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              textShadow: '2px 2px 0px rgba(107, 75, 154, 0.12)',
-              display: 'inline-block',
-              transform: 'rotate(-1deg)'
-            }}>
-              What is Momentous
-            </span>
-            <br />
-            <span style={{
-              background: 'linear-gradient(135deg, #6B4B9A 0%, #D94F8C 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              textShadow: '2px 2px 0px rgba(107, 75, 154, 0.12)',
-              display: 'inline-block',
-              transform: 'rotate(1deg)'
-            }}>
-              Studio Raya? ✨
-            </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 tracking-wide leading-tight text-[#fcfcfc]">
+            What is Momentous Studio Raya?
           </h2>
-          <p className="text-base md:text-lg leading-relaxed text-[#6B4E2C] font-serif max-w-2xl mx-auto mb-2">
-            Classic garden setting surrounded by natural greenery, warm string lights, vintage elements, and soft lantern lighting — creating an elegant space for capturing meaningful moments.
+          <p className="text-base md:text-lg leading-relaxed text-[#fcfcfc] max-w-2xl mx-auto mb-2">
+            Laman raya berkonsepkan alam semula jadi dan gaya klasik Melayu dengan suasana tenang, menggunakan cahaya semula jadi dan dekorasi ringkas.
           </p>
-          <p className="text-sm md:text-base text-primary font-serif italic">
+          <p className="text-sm md:text-base text-[#C49A6C] italic">
             A glimpse of our studio
           </p>
         </div>
@@ -64,7 +25,7 @@ const GallerySection = () => {
               src={getImagePath('images/1.jpeg')} 
               alt="Studio setup 1" 
               loading="eager"
-              fetchPriority="high"
+              fetchpriority="high"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
           </div>

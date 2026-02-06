@@ -11,11 +11,15 @@ export const useBooking = () => {
   const packages = usePackages();
   const preselectedPackageId = searchParams.get("package");
   const preselectedPackage = packages.find((p) => p.id === preselectedPackageId) || null;
+  
+  // Auto-select if only one package exists
+  const autoSelectedPackage = packages.length === 1 ? packages[0] : preselectedPackage;
+  const shouldSkipPackageSelection = packages.length === 1 || preselectedPackage !== null;
 
-  const [currentStep, setCurrentStep] = useState(preselectedPackage ? 2 : 1);
+  const [currentStep, setCurrentStep] = useState(shouldSkipPackageSelection ? 1 : 1);
   const [sheetBookings, setSheetBookings] = useState<any[]>([]);
   const [booking, setBooking] = useState<BookingDetails>({
-    package: preselectedPackage,
+    package: autoSelectedPackage,
     date: null,
     time: null,
     timeSlots: [],
@@ -36,12 +40,18 @@ export const useBooking = () => {
     consent?: string;
   }>({});
 
-  const steps = [
-    { number: 1, title: "Package" },
-    { number: 2, title: "Date & Time" },
-    { number: 3, title: "Your Details" },
-    { number: 4, title: "Confirm" },
-  ];
+  const steps = packages.length === 1 
+    ? [
+        { number: 1, title: "Date & Time" },
+        { number: 2, title: "Your Details" },
+        { number: 3, title: "Confirm" },
+      ]
+    : [
+        { number: 1, title: "Package" },
+        { number: 2, title: "Date & Time" },
+        { number: 3, title: "Your Details" },
+        { number: 4, title: "Confirm" },
+      ];
 
   useEffect(() => {
     fetchBookingsFromSheet().then(setSheetBookings);

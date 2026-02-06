@@ -7,7 +7,6 @@ import DateTimePicker from "@/components/booking/DateTimePicker";
 import CustomerForm from "@/components/booking/CustomerForm";
 import BookingSummary from "@/components/booking/BookingSummary";
 import PaxCounter from "@/components/booking/PaxCounter";
-import FloatingClouds from "@/components/decorations/FloatingClouds";
 import { Button } from "@/components/ui/button";
 import { useBooking } from "@/hooks/useBooking";
 import { useToast } from "@/hooks/use-toast";
@@ -49,14 +48,20 @@ const Booking = () => {
     
     // Show success toast
     toast({
-      title: "WhatsApp Opened! 🎉",
+      title: "WhatsApp Opened!",
       description: "Please send the message in WhatsApp to complete your booking.",
     });
   };
 
   const renderStepContent = () => {
-    switch (currentStep) {
+    // When we have only one package, we skip step 1 (package selection)
+    // So we need to map the current step to the actual content step
+    const hasOnlyOnePackage = packages.length === 1;
+    const contentStep = hasOnlyOnePackage ? currentStep + 1 : currentStep;
+    
+    switch (contentStep) {
       case 1:
+        // Package selection - only shown when multiple packages
         return (
           <div className="space-y-6">
             <div className="text-center mb-8">
@@ -80,6 +85,7 @@ const Booking = () => {
         );
 
       case 2:
+        // Date, Time & Pax selection
         return (
           <div className="space-y-8">
             <div className="text-center mb-8">
@@ -109,6 +115,7 @@ const Booking = () => {
         );
 
       case 3:
+        // Customer details
         return (
           <div className="space-y-6">
             <div className="text-center mb-8">
@@ -134,6 +141,7 @@ const Booking = () => {
         );
 
       case 4:
+        // Confirmation
         return (
           <div className="space-y-6">
             <div className="text-center mb-8">
@@ -153,16 +161,15 @@ const Booking = () => {
 
   return (
     <div className="min-h-screen flex flex-col relative">
-      <FloatingClouds density="light" />
       <Header />
-      <main className="flex-1 py-12">
+      <main className="flex-1 py-8 md:py-10">
         <div className="booking-container">
           <BookingSteps currentStep={currentStep} steps={steps} />
 
-          <div className="mt-8 animate-fade-in">{renderStepContent()}</div>
+          <div className="mt-6 md:mt-8 animate-fade-in">{renderStepContent()}</div>
 
           {/* Navigation Buttons */}
-          <div className="mt-12 flex justify-between max-w-xl mx-auto">
+          <div className="mt-8 md:mt-10 flex justify-between max-w-xl mx-auto">
             {currentStep > 1 ? (
               <Button variant="outline" onClick={prevStep} className="gap-2 transition-all duration-300">
                 <ArrowLeft className="h-4 w-4" />
@@ -172,7 +179,7 @@ const Booking = () => {
               <div />
             )}
 
-            {currentStep < 4 ? (
+            {currentStep < steps.length ? (
               <Button
                 onClick={nextStep}
                 disabled={!canProceed()}

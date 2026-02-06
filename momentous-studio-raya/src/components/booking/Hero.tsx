@@ -5,51 +5,55 @@ import { getImagePath } from '@/utils/imagePath';
 
 const Hero = () => {
   return (
-    <section className="relative py-20 md:py-32 flex flex-col items-center justify-center overflow-hidden bg-[#F5EDD8] px-4">
-        {/* Playful Animated Elements */}
-        <img src={getImagePath('images/icons/cloud (1).png')} alt="" loading="lazy" className="absolute top-10 right-10 w-24 opacity-50 animate-float pointer-events-none" style={{animation: 'float 6s ease-in-out infinite'}} />
-        <img src={getImagePath('images/icons/cloud (2).png')} alt="" loading="lazy" className="absolute top-32 left-16 w-32 opacity-40 animate-float pointer-events-none" style={{animation: 'float 8s ease-in-out infinite 2s'}} />
-        <img src={getImagePath('images/icons/cloud (3).png')} alt="" loading="lazy" className="absolute top-20 left-1/2 w-20 opacity-35 animate-float pointer-events-none" style={{animation: 'float 7s ease-in-out infinite 1s'}} />
-        <div className="absolute bottom-20 right-24 text-4xl opacity-35 animate-float" style={{animation: 'float 10s ease-in-out infinite 4s'}}>
-          ✨
-        </div>
-        <div className="absolute top-1/4 left-8 text-3xl opacity-40 animate-float" style={{animation: 'float 7s ease-in-out infinite 1s'}}>
-          ⭐
-        </div>
-        <div className="absolute bottom-40 left-20 text-5xl opacity-30 animate-float" style={{animation: 'float 9s ease-in-out infinite 3s'}}>
-          🌙
-        </div>
-
-        {/* Main logo - More Compact */}
-        <div className="relative z-10 text-center animate-fade-in">
-          <div className="mb-6">
-            {/* Logo Image */}
-            <div className="relative inline-block mb-4">
-              <img 
-                src={getImagePath('images/logo/logo.png')} 
-                alt="Momentous Studio Raya" 
-                loading="eager"
-                fetchPriority="high"
-                className="w-[300px] md:w-[400px] lg:w-[650px] h-auto mx-auto drop-shadow-xl"
-                style={{
-                  filter: 'drop-shadow(3px 3px 8px rgba(107, 75, 154, 0.3))'
-                }}
-              />
-              {/* Playful dots */}
-              <span className="absolute -top-4 -right-8 text-4xl">✨</span>
-            </div>
+    <section className="relative py-8 md:py-12 flex flex-col items-center justify-center overflow-hidden bg-[#415643] px-4">
+        <div className="relative z-10 text-center animate-fade-in max-w-2xl mx-auto">
+          {/* Logo */}
+          <div className="mb-2">
+            <img 
+              src={getImagePath('images/logo/logo.png')} 
+              alt="Momentous Studio Raya" 
+              loading="eager"
+              fetchpriority="high"
+              className="w-[150px] md:w-[180px] h-auto mx-auto"
+            />
           </div>
           
-          <p className="text-lg md:text-xl font-serif italic text-[#6B4E2C] mb-8 flex items-center justify-center gap-2">
-            <span className="text-2xl">🌿</span>
-            A Classic Garden Studio
-            <span className="text-2xl">🌿</span>
+          {/* MOMENTOUS FOTO */}
+          <h1 className="text-[#fcfcfc] text-xl md:text-2xl font-semibold tracking-[0.3em] mb-8">
+            MOMENTOUS FOTO
+          </h1>
+          
+          {/* LAMAN RAYA */}
+          <h2 className="text-[#fcfcfc] text-2xl md:text-3xl font-bold tracking-[0.2em] mb-4">
+            LAMAN RAYA
+          </h2>
+          
+          {/* Main Image */}
+          <div className="mb-4 rounded-lg overflow-hidden shadow-2xl aspect-square max-w-md mx-auto">
+            <img 
+              src={getImagePath('images/sample/main.jpeg')} 
+              alt="Laman Raya Setup" 
+              loading="eager"
+              fetchpriority="high"
+              className="w-full h-full object-cover object-bottom"
+            />
+          </div>
+          
+          {/* Description */}
+          <p className="text-sm md:text-base text-[#fcfcfc] mb-4 leading-relaxed px-4">
+            Laman raya momentous berkonsepkan alam semula jadi dan gaya klasik Melayu. Dijalankan di kawasan luar dengan suasana tenang, menggunakan cahaya semula jadi dan dekorasi ringkas. Sesuai untuk merakam kenangan raya yang indah dan penuh makna.
+          </p>
+          
+          {/* Location */}
+          <p className="text-base md:text-lg text-[#fcfcfc] mb-6 font-medium">
+            Outdoor photoshoot, Bukit Lagong, Batu Caves
           </p>
 
-          <Button asChild size="lg" className="group bg-gradient-to-r from-[#D94F8C] to-[#6B4B9A] hover:opacity-90 hover:scale-105 transition-all text-white font-bold px-6 py-5 text-base rounded-full shadow-lg">
+          {/* Button */}
+          <Button asChild size="lg" className="bg-[#C49A6C] hover:bg-[#B08A5C] transition-all text-[#415643] font-bold px-6 md:px-8 py-5 md:py-6 text-sm md:text-base rounded-md shadow-lg touch-manipulation w-full sm:w-auto">
             <Link to="/packages">
-              View Packages ✨
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              Get package
+              <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
         </div>

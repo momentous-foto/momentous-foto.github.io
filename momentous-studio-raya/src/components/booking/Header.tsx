@@ -25,7 +25,7 @@ const Header = () => {
             alt="Momentous Studio Raya" 
             className="h-10 w-auto"
             loading="eager"
-            fetchPriority="high"
+            fetchpriority="high"
           />
         </Link>
 

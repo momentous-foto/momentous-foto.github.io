@@ -9,49 +9,25 @@ export const getNextSlayPriceChange = (now: Date = new Date()): Date | null =>
 
 export const getPackages = (now: Date = new Date()): Package[] => [
   {
-    id: "basic",
-    name: "Basic Package",
-    description: "Outdoor Photoshoot — bring your own device and capture your Raya moments!",
-    duration: "15 minutes",
-    photos: 0,
-    price: 68,
-    features: [
-      "15 minutes session",
-      "Outdoor Photoshoot",
-      "No photographer provided",
-      "Bring your own device",
-      "Tripods for mobile/camera are provided",
-      "Valid for 1-4 pax",
-      "Add on adults: RM10/pax (max 6 add-ons)",
-      "Kids (0-6 years) FREE - just mention how many",
-      "Max total: 10 people per session",
-      "Book multiple slots: +RM68 per extra slot",
-    ],
-  },
-  {
     id: "slay",
     name: "Slay Package",
-    description: "Full photography experience with professional photographer and same-day delivery!",
+    description: "Classic outdoor photoshoot at Bukit Lagong, Batu Caves with natural nature setting and Malay classic style.",
     duration: "15 minutes",
     photos: 10,
     price: getSlayPackagePrice(now),
     features: [
-      "15 minutes session",
-      "Outdoor Photoshoot",
-      "1 photographer provided",
-      "Natural lighting and mono-light",
-      "All RAW & 10 edited photos",
-      "Same day delivery (Google Drive)",
-      "Valid for 1-4 pax",
-      "Add on adults: RM10/pax (max 6 add-ons)",
-      "Kids (0-6 years) FREE - just mention how many",
-      "Max total: 10 people per session",
-      `Book multiple slots: +RM${getSlayPackagePrice(now)} per extra slot`,
+      "Maximum 1-4 persons (Additional RM10 per person)",
+      "Children below 6 years old: Free",
+      "Session duration 15 minutes",
+      "Unlimited shots",
+      "Outdoor photoshoot",
+      "Raw photos delivered within 1-2 working days",
+      "10 edited photos (selected by the customer)",
+      "Photos uploaded to Google Drive (valid for 7 days)",
+      "Additional edited photos: RM5 per photo",
     ],
   },
 ];
-
-export const packages: Package[] = getPackages();
 
 // Available date slots for Raya season
 export const availableDates = [

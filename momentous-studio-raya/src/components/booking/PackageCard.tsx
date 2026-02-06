@@ -19,25 +19,34 @@ const PackageCard = ({ pkg, featured = false }: PackageCardProps) => {
   useEffect(() => {
     if (!isSlay) return;
 
+    let intervalId: number;
+
     const tick = () => {
       const current = new Date();
       const nextChange = getNextSlayPriceChange(current);
       setNow(current);
 
-      if (!nextChange) {
+      // If no more price changes, clear the interval
+      if (!nextChange && intervalId) {
         window.clearInterval(intervalId);
       }
     };
 
-    tick();
-    const intervalId = window.setInterval(tick, 1000);
+    tick(); // Initial tick
+    intervalId = window.setInterval(tick, 1000);
 
-    return () => window.clearInterval(intervalId);
+    return () => {
+      if (intervalId) {
+        window.clearInterval(intervalId);
+      }
+    };
   }, [isSlay]);
 
   const nextChange = useMemo(() => (isSlay ? getNextSlayPriceChange(now) : null), [isSlay, now]);
+  
   const countdown = useMemo(() => {
-    if (!nextChange) return null;
+    if (!isSlay || !nextChange) return null;
+    
     const remainingMs = nextChange.getTime() - now.getTime();
     if (remainingMs <= 0) return null;
 
@@ -52,13 +61,14 @@ const PackageCard = ({ pkg, featured = false }: PackageCardProps) => {
   }, [nextChange, now]);
 
   const cutoffLabel = useMemo(() => {
-    if (!nextChange) return null;
+    if (!isSlay || !nextChange) return null;
+    
     return nextChange.toLocaleDateString("en-GB", {
       day: "numeric",
       month: "numeric",
       year: "numeric",
     });
-  }, [nextChange]);
+  }, [isSlay, nextChange]);
 
   return (
     <Card
