@@ -1,6 +1,13 @@
 import { Package } from "@/types/booking";
 
-export const packages: Package[] = [
+const SLAY_PRICE_CUTOFF = new Date(2026, 1, 7, 0, 0, 0);
+const getSlayPackagePrice = (now: Date = new Date()): number =>
+  now >= SLAY_PRICE_CUTOFF ? 149 : 99;
+
+export const getNextSlayPriceChange = (now: Date = new Date()): Date | null =>
+  now < SLAY_PRICE_CUTOFF ? SLAY_PRICE_CUTOFF : null;
+
+export const getPackages = (now: Date = new Date()): Package[] => [
   {
     id: "basic",
     name: "Basic Package",
@@ -27,7 +34,7 @@ export const packages: Package[] = [
     description: "Full photography experience with professional photographer and same-day delivery!",
     duration: "15 minutes",
     photos: 10,
-    price: 99,
+    price: getSlayPackagePrice(now),
     features: [
       "15 minutes session",
       "Outdoor Photoshoot",
@@ -39,10 +46,12 @@ export const packages: Package[] = [
       "Add on adults: RM10/pax (max 6 add-ons)",
       "Kids (0-6 years) FREE - just mention how many",
       "Max total: 10 people per session",
-      "Book multiple slots: +RM99 per extra slot",
+      `Book multiple slots: +RM${getSlayPackagePrice(now)} per extra slot`,
     ],
   },
 ];
+
+export const packages: Package[] = getPackages();
 
 // Available date slots for Raya season
 export const availableDates = [

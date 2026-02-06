@@ -1,12 +1,14 @@
 import { useState, useCallback, useMemo, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { BookingDetails, Package } from "@/types/booking";
-import { packages, getTimeSlotsForDate, bookedSlots, pendingSlots } from "@/data/packages";
+import { getTimeSlotsForDate, bookedSlots, pendingSlots } from "@/data/packages";
+import { usePackages } from "@/hooks/usePackages";
 import { format } from "date-fns";
 import { fetchBookingsFromSheet, getBookingStatus } from "@/utils/sheets";
 
 export const useBooking = () => {
   const [searchParams] = useSearchParams();
+  const packages = usePackages();
   const preselectedPackageId = searchParams.get("package");
   const preselectedPackage = packages.find((p) => p.id === preselectedPackageId) || null;
 
@@ -44,6 +46,15 @@ export const useBooking = () => {
   useEffect(() => {
     fetchBookingsFromSheet().then(setSheetBookings);
   }, []);
+
+  useEffect(() => {
+    if (!booking.package) return;
+
+    const updatedPackage = packages.find((pkg) => pkg.id === booking.package?.id);
+    if (updatedPackage && updatedPackage.price !== booking.package.price) {
+      setBooking((prev) => ({ ...prev, package: updatedPackage }));
+    }
+  }, [packages, booking.package]);
 
   const selectPackage = useCallback((pkg: Package) => {
     setBooking((prev) => ({ ...prev, package: pkg }));

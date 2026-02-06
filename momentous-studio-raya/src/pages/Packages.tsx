@@ -1,10 +1,12 @@
 import Header from "@/components/booking/Header";
 import Footer from "@/components/booking/Footer";
 import PackageCard from "@/components/booking/PackageCard";
-import { packages } from "@/data/packages";
+import { usePackages } from "@/hooks/usePackages";
 import FloatingClouds from "@/components/decorations/FloatingClouds";
 
 const Packages = () => {
+  const packages = usePackages();
+
   return (
     <div className="min-h-screen flex flex-col relative">
       <FloatingClouds density="medium" />

@@ -1,6 +1,8 @@
+import { useEffect, useMemo, useState } from "react";
 import { Check, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Package } from "@/types/booking";
+import { getNextSlayPriceChange } from "@/data/packages";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
@@ -11,6 +13,53 @@ interface PackageCardProps {
 }
 
 const PackageCard = ({ pkg, featured = false }: PackageCardProps) => {
+  const isSlay = pkg.id === "slay";
+  const [now, setNow] = useState(() => new Date());
+
+  useEffect(() => {
+    if (!isSlay) return;
+
+    const tick = () => {
+      const current = new Date();
+      const nextChange = getNextSlayPriceChange(current);
+      setNow(current);
+
+      if (!nextChange) {
+        window.clearInterval(intervalId);
+      }
+    };
+
+    tick();
+    const intervalId = window.setInterval(tick, 1000);
+
+    return () => window.clearInterval(intervalId);
+  }, [isSlay]);
+
+  const nextChange = useMemo(() => (isSlay ? getNextSlayPriceChange(now) : null), [isSlay, now]);
+  const countdown = useMemo(() => {
+    if (!nextChange) return null;
+    const remainingMs = nextChange.getTime() - now.getTime();
+    if (remainingMs <= 0) return null;
+
+    const totalSeconds = Math.ceil(remainingMs / 1000);
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    return `${hours.toString().padStart(2, "0")}:${minutes
+      .toString()
+      .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+  }, [nextChange, now]);
+
+  const cutoffLabel = useMemo(() => {
+    if (!nextChange) return null;
+    return nextChange.toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "numeric",
+      year: "numeric",
+    });
+  }, [nextChange]);
+
   return (
     <Card
       className={cn(
@@ -33,6 +82,13 @@ const PackageCard = ({ pkg, featured = false }: PackageCardProps) => {
 
       <CardContent className="flex-1">
         <div className="text-center mb-6">
+          {isSlay && countdown && (
+            <div className="mb-3">
+              <span className="inline-flex items-center rounded-full bg-accent/15 px-3 py-1 text-xs font-semibold text-accent">
+                Price goes up in {countdown}
+              </span>
+            </div>
+          )}
           {pkg.isCustom ? (
             <div className="text-3xl font-bold">Custom Quote</div>
           ) : (
@@ -41,6 +97,9 @@ const PackageCard = ({ pkg, featured = false }: PackageCardProps) => {
               <span className="text-4xl font-bold">{pkg.price}</span>
               <span className="text-muted-foreground ml-1">/ session</span>
             </>
+          )}
+          {isSlay && cutoffLabel && (
+            <p className="mt-2 text-xs text-muted-foreground">RM99 until {cutoffLabel}</p>
           )}
         </div>
 

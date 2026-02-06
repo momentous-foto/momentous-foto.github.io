@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { packages } from "@/data/packages";
+import { usePackages } from "@/hooks/usePackages";
 import PackageCard from "./PackageCard";
 import { Button } from "@/components/ui/button";
 
 const PackagesPreview = () => {
+  const packages = usePackages();
+
   return (
     <section className="py-12 bg-muted/30">
       <div className="booking-container">
