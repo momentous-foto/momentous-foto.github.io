@@ -41,9 +41,9 @@ export const organizationSchema = {
       name: 'Malaysia',
     },
   ],
-  priceRange: '$$',
-  telephone: '+60-xxx-xxxxxxx', // Add your actual phone number
-  email: 'info@momentousfoto.com', // Update with actual email
+  priceRange: 'RM1499 - RM2000',
+  telephone: '+60104471403',
+  email: 'momentousfotostudio@gmail.com',
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
@@ -53,7 +53,7 @@ export const organizationSchema = {
     },
   ],
   sameAs: [
-    'https://www.instagram.com/momentous.foto', // Add your actual social media links
+    'https://www.instagram.com/momentous.foto',
     'https://www.facebook.com/momentousfoto',
     'https://www.tiktok.com/@momentousfoto',
   ],
