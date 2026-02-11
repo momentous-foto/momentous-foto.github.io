@@ -1,8 +1,30 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import fs from 'fs';
-import path from 'path';
+import path from 'path';import { Metadata } from 'next';
 
+export const metadata: Metadata = {
+  title: 'Photography Services - Wedding, Maternity, Convocation | Momentous Foto',
+  description: 'Professional photography services in Kuala Lumpur, Malaysia. Wedding photography, pre-wedding shoots, maternity, convocation, event photography. Second shooter services available. Book now!',
+  keywords: [
+    'photography services Malaysia',
+    'wedding photography services KL',
+    'pre-wedding photographer',
+    'maternity photography Malaysia',
+    'convocation photographer KL',
+    'event photography services',
+    'second shooter Malaysia',
+    'professional photography services',
+  ],
+  openGraph: {
+    title: 'Photography Services | Momentous Foto Malaysia',
+    description: 'Wedding, Pre-wedding, Maternity, Convocation & Event Photography Services in KL',
+    url: 'https://momentous-foto.github.io/services',
+  },
+  alternates: {
+    canonical: 'https://momentous-foto.github.io/services',
+  },
+};
 const services = [
   { id: 1, name: 'Second Shooter (Wedding)', slug: 'second-shooter' },
   { id: 3, name: 'Pre / Post wedding', slug: 'prepost-wedding' },

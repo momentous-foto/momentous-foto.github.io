@@ -1,3 +1,27 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'About Us - Woman Photographer | Momentous Foto',
+  description: 'Meet the woman photographer behind Momentous Foto. Started in 2021 with a passion for capturing authentic moments. Based in Kuala Lumpur, Malaysia, specializing in wedding and event photography.',
+  keywords: [
+    'Momentous Foto about',
+    'woman photographer Malaysia',
+    'female photographer KL',
+    'about Momentous Foto',
+    'wedding photographer story',
+    'photography journey Malaysia',
+  ],
+  openGraph: {
+    title: 'About Momentous Foto | Woman Photographer in Malaysia',
+    description: 'Meet the woman photographer behind Momentous Foto. Capturing authentic moments since 2021.',
+    url: 'https://momentous-foto.github.io/about',
+    images: ['/images/about/moodboard - about us.png'],
+  },
+  alternates: {
+    canonical: 'https://momentous-foto.github.io/about',
+  },
+};
+
 export default function About() {
   return (
     <div className="min-h-screen pt-20">

@@ -1,0 +1,12 @@
+# SEO Strategy Documentation 
+QUICK_START_SEO.md
+SEO_STRATEGY.md
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
