@@ -16,7 +16,7 @@ const baseUrl = 'https://momentous-foto.github.io';
 
 export const metadata: Metadata = {
   title: 'Momentous Foto - Photography Portfolio',
-  description: 'Professional wedding and event photography with a unique blacky/fade grading aesthetic. Capturing your precious moments since 2021.',
+  description: 'Momentous Foto is about capturing moments as they happen — real, honest, and full of feeling, preserving memories that stay with you forever.',
   keywords: ['photography', 'wedding photography', 'event photography', 'Malaysia photographer', 'pre-wedding', 'maternity photography'],
   icons: {
     icon: '/images/logo/logo-simple.jpeg',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     url: baseUrl,
     siteName: 'Momentous Foto',
     title: 'Momentous Foto | Professional Wedding Photographer in Malaysia',
-    description: 'Professional wedding & event photographer in Kuala Lumpur, Malaysia. Capturing your precious moments with unique blacky/fade grading aesthetic since 2021.',
+    description: 'Momentous Foto is about capturing moments as they happen — real, honest, and full of feeling, preserving memories that stay with you forever.',
     images: [
       {
         url: `${baseUrl}/images/logo/logo-simple.jpeg`,
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Momentous Foto | Professional Wedding Photographer',
-    description: 'Professional wedding & event photographer in Kuala Lumpur, Malaysia',
+    description: 'Momentous Foto is about capturing moments as they happen — real, honest, and full of feeling, preserving memories that stay with you forever.',
     images: [`${baseUrl}/images/logo/logo-simple.jpeg`],
     creator: '@momentousfoto',
   },
