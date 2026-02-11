@@ -1,8 +1,15 @@
 import { Package } from "@/types/booking";
 
 const SLAY_PRICE_CUTOFF = new Date(2026, 1, 7, 0, 0, 0);
-const getSlayPackagePrice = (now: Date = new Date()): number =>
-  now >= SLAY_PRICE_CUTOFF ? 149 : 99;
+const BIRTHDAY_PROMO_DATE = new Date(2026, 1, 27, 0, 0, 0); // Feb 27, 2026 - Photographer's Birthday Promo! 🎉
+
+const getSlayPackagePrice = (now: Date = new Date()): number => {
+  // Birthday promo: RM129 on Feb 27, 2026
+  if (now.toDateString() === BIRTHDAY_PROMO_DATE.toDateString()) {
+    return 129;
+  }
+  return now >= SLAY_PRICE_CUTOFF ? 149 : 99;
+}
 
 export const getNextSlayPriceChange = (now: Date = new Date()): Date | null =>
   now < SLAY_PRICE_CUTOFF ? SLAY_PRICE_CUTOFF : null;
@@ -34,6 +41,7 @@ export const availableDates = [
   // February 2026
   new Date(2026, 1, 21), // 21/2/2026
   new Date(2026, 1, 22), // 22/2/2026
+  new Date(2026, 1, 27), // 27/2/2026 - 🎉 BIRTHDAY PROMO: RM129!
   new Date(2026, 1, 28), // 28/2/2026
   // March 2026
   new Date(2026, 2, 1),  // 1/3/2026
@@ -98,6 +106,7 @@ export const fullExtendedTimeSlots = [
 // Dates with medium extended hours (until 03:40PM - 03:55PM)
 export const mediumExtendedHourDates = [
   new Date(2026, 1, 21).toDateString(), // 21/2/2026
+  new Date(2026, 1, 27).toDateString(), // 27/2/2026 - Birthday Promo
   new Date(2026, 1, 22).toDateString(), // 22/2/2026
   new Date(2026, 1, 28).toDateString(), // 28/2/2026
   new Date(2026, 2, 1).toDateString(),  // 1/3/2026

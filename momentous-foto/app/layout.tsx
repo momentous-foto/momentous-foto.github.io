@@ -13,7 +13,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'Momentous Foto - Photography Portfolio',
-  description: 'Professional wedding and event photography with a unique blacky/fade grading aesthetic. Capturing your precious moments since 2021.',
+  description: 'Momentous Foto is about capturing moments as they happen — real, honest, and full of feeling, preserving memories that stay with you forever.',
   keywords: ['photography', 'wedding photography', 'event photography', 'Malaysia photographer', 'pre-wedding', 'maternity photography'],
   icons: {
     icon: '/images/logo/logo-simple.jpeg',
