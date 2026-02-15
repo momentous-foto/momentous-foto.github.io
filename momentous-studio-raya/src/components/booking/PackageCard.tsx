@@ -95,7 +95,7 @@ const PackageCard = ({ pkg, featured = false }: PackageCardProps) => {
         <div className="text-center mb-6">
           {isSlay && countdown && isOnClearanceSale && (
             <div className="mb-3">
-              <span className="inline-flex items-center rounded-full bg-red-500/15 px-3 py-1 text-xs font-semibold text-red-600">
+              <span className="inline-flex items-center rounded-full bg-red-500/15 px-3 py-1 text-xs font-semibold text-white">
                 🔥 Clearance Sale ends in {countdown}
               </span>
             </div>
@@ -107,7 +107,7 @@ const PackageCard = ({ pkg, featured = false }: PackageCardProps) => {
               {pkg.originalPrice && (
                 <div className="text-muted-foreground">
                   <span className="text-lg line-through">RM{pkg.originalPrice}</span>
-                  <span className="ml-2 text-xs text-red-600 font-semibold">SAVE RM{pkg.originalPrice - pkg.price}</span>
+                  <span className="ml-2 text-xs text-yellow-500 font-semibold">SAVE RM{pkg.originalPrice - pkg.price}</span>
                 </div>
               )}
               <div>
@@ -118,7 +118,7 @@ const PackageCard = ({ pkg, featured = false }: PackageCardProps) => {
             </>
           )}
           {isSlay && isOnClearanceSale && (
-            <p className="mt-2 text-xs font-semibold text-red-600">Limited time offer until 27 Feb 2026!</p>
+            <p className="mt-2 text-xs font-semibold text-black">Limited time offer until 27 Feb 2026!</p>
           )}
         </div>
 
