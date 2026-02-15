@@ -31,7 +31,7 @@ const Hero = () => {
           {/* Main Image */}
           <div className="mb-4 rounded-lg overflow-hidden shadow-2xl aspect-square max-w-md mx-auto">
             <img 
-              src={getImagePath('images/sample/main.jpeg')} 
+              src={getImagePath('images/sample/main.webp')} 
               alt="Laman Raya Setup" 
               loading="eager"
               fetchpriority="high"
