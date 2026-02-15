@@ -10,10 +10,21 @@ const path = require('path');
  * 2. Resizing to appropriate dimensions for web display
  * 3. Reducing file size while maintaining quality
  * 
- * Run: node scripts/optimize-images.js
+ * Usage:
+ *   node scripts/optimize-images.js [directory]
+ * 
+ * Examples:
+ *   node scripts/optimize-images.js
+ *   node scripts/optimize-images.js public/images/sample
+ *   node scripts/optimize-images.js ../momentous-studio-raya/public/images/sample
  */
 
-const IMAGES_DIR = path.join(process.cwd(), 'public', 'images', 'clients');
+// Get directory from command line argument or use default
+const targetDir = process.argv[2] || 'public/images/clients';
+const IMAGES_DIR = path.isAbsolute(targetDir) 
+  ? targetDir 
+  : path.join(process.cwd(), targetDir);
+
 const MAX_WIDTH = 1920; // Max width for large displays
 const QUALITY = 80; // WebP quality (80 is good balance)
 
