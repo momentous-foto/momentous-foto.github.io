@@ -177,33 +177,61 @@ export const useBooking = () => {
   }, [booking.customerName, booking.customerEmail, booking.customerPhone, booking.imageConsent]);
 
   const nextStep = useCallback(() => {
-    if (currentStep === 3 && !validateStep3()) {
+    // Determine if we're on the customer details step
+    // When only 1 package: step 2 is customer details
+    // When multiple packages: step 3 is customer details
+    const isCustomerDetailsStep = packages.length === 1 ? currentStep === 2 : currentStep === 3;
+    
+    if (isCustomerDetailsStep && !validateStep3()) {
       return;
     }
-    setCurrentStep((prev) => Math.min(prev + 1, 4));
-  }, [currentStep, validateStep3]);
+    
+    const maxStep = packages.length === 1 ? 3 : 4;
+    setCurrentStep((prev) => Math.min(prev + 1, maxStep));
+  }, [currentStep, validateStep3, packages.length]);
 
   const prevStep = useCallback(() => {
     setCurrentStep((prev) => Math.max(prev - 1, 1));
   }, []);
 
   const canProceed = useCallback(() => {
-    switch (currentStep) {
-      case 1:
-        return booking.package !== null;
-      case 2:
-        return booking.date !== null && booking.timeSlots.length > 0;
-      case 3:
-        return (
-          booking.customerName.trim() !== "" &&
-          booking.customerEmail.trim() !== "" &&
-          booking.customerPhone.trim() !== "" &&
-          booking.imageConsent
-        );
-      default:
-        return true;
+    // Adjust step checking based on whether package selection was skipped
+    const hasOnlyOnePackage = packages.length === 1;
+    
+    if (hasOnlyOnePackage) {
+      // Steps: 1=Date&Time, 2=Details, 3=Confirm
+      switch (currentStep) {
+        case 1:
+          return booking.date !== null && booking.timeSlots.length > 0;
+        case 2:
+          return (
+            booking.customerName.trim() !== "" &&
+            booking.customerEmail.trim() !== "" &&
+            booking.customerPhone.trim() !== "" &&
+            booking.imageConsent
+          );
+        default:
+          return true;
+      }
+    } else {
+      // Steps: 1=Package, 2=Date&Time, 3=Details, 4=Confirm
+      switch (currentStep) {
+        case 1:
+          return booking.package !== null;
+        case 2:
+          return booking.date !== null && booking.timeSlots.length > 0;
+        case 3:
+          return (
+            booking.customerName.trim() !== "" &&
+            booking.customerEmail.trim() !== "" &&
+            booking.customerPhone.trim() !== "" &&
+            booking.imageConsent
+          );
+        default:
+          return true;
+      }
     }
-  }, [currentStep, booking]);
+  }, [currentStep, booking, packages.length]);
 
   return {
     currentStep,

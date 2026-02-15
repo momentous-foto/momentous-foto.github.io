@@ -46,6 +46,7 @@ const CustomerForm = ({
           value={customerName}
           onChange={(e) => onNameChange(e.target.value)}
           className={errors.name ? "border-destructive" : ""}
+          required
         />
         {errors.name && (
           <p className="text-sm text-destructive">{errors.name}</p>
@@ -61,6 +62,7 @@ const CustomerForm = ({
           value={customerEmail}
           onChange={(e) => onEmailChange(e.target.value)}
           className={errors.email ? "border-destructive" : ""}
+          required
         />
         {errors.email && (
           <p className="text-sm text-destructive">{errors.email}</p>
@@ -76,6 +78,7 @@ const CustomerForm = ({
           value={customerPhone}
           onChange={(e) => onPhoneChange(e.target.value)}
           className={errors.phone ? "border-destructive" : ""}
+          required
         />
         {errors.phone && (
           <p className="text-sm text-destructive">{errors.phone}</p>
@@ -162,12 +165,13 @@ const CustomerForm = ({
               checked={imageConsent}
               onCheckedChange={onImageConsentChange}
               className="mt-1"
+              required
             />
             <label
               htmlFor="imageConsent"
               className="text-sm font-medium leading-relaxed cursor-pointer"
             >
-              I hereby grant full and unrestricted permission to Momentous Foto to use my images and/or videos for the purposes stated above, and I agree to all terms and conditions.
+              I hereby grant full and unrestricted permission to Momentous Foto to use my images and/or videos for the purposes stated above, and I agree to all terms and conditions. *
             </label>
           </div>
           {errors.consent && (
