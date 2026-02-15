@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Check, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Package } from "@/types/booking";
-import { getNextSlayPriceChange } from "@/data/packages";
+import { getNextSlayPriceChange, isClearanceSale } from "@/data/packages";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
@@ -43,6 +43,7 @@ const PackageCard = ({ pkg, featured = false }: PackageCardProps) => {
   }, [isSlay]);
 
   const nextChange = useMemo(() => (isSlay ? getNextSlayPriceChange(now) : null), [isSlay, now]);
+  const isOnClearanceSale = useMemo(() => (isSlay ? isClearanceSale(now) : false), [isSlay, now]);
   
   const countdown = useMemo(() => {
     if (!isSlay || !nextChange) return null;
@@ -92,10 +93,10 @@ const PackageCard = ({ pkg, featured = false }: PackageCardProps) => {
 
       <CardContent className="flex-1">
         <div className="text-center mb-6">
-          {isSlay && countdown && (
+          {isSlay && countdown && isOnClearanceSale && (
             <div className="mb-3">
-              <span className="inline-flex items-center rounded-full bg-accent/15 px-3 py-1 text-xs font-semibold text-accent">
-                Price goes up in {countdown}
+              <span className="inline-flex items-center rounded-full bg-red-500/15 px-3 py-1 text-xs font-semibold text-red-600">
+                🔥 Clearance Sale ends in {countdown}
               </span>
             </div>
           )}
@@ -103,13 +104,21 @@ const PackageCard = ({ pkg, featured = false }: PackageCardProps) => {
             <div className="text-3xl font-bold">Custom Quote</div>
           ) : (
             <>
-              <span className="text-sm text-muted-foreground">RM</span>
-              <span className="text-4xl font-bold">{pkg.price}</span>
-              <span className="text-muted-foreground ml-1">/ session</span>
+              {pkg.originalPrice && (
+                <div className="text-muted-foreground">
+                  <span className="text-lg line-through">RM{pkg.originalPrice}</span>
+                  <span className="ml-2 text-xs text-red-600 font-semibold">SAVE RM{pkg.originalPrice - pkg.price}</span>
+                </div>
+              )}
+              <div>
+                <span className="text-sm text-muted-foreground">RM</span>
+                <span className="text-4xl font-bold">{pkg.price}</span>
+                <span className="text-muted-foreground ml-1">/ session</span>
+              </div>
             </>
           )}
-          {isSlay && cutoffLabel && (
-            <p className="mt-2 text-xs text-muted-foreground">RM99 until {cutoffLabel}</p>
+          {isSlay && isOnClearanceSale && (
+            <p className="mt-2 text-xs font-semibold text-red-600">Limited time offer until 27 Feb 2026!</p>
           )}
         </div>
 

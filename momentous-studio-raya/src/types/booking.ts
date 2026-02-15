@@ -5,6 +5,7 @@ export interface Package {
   duration: string;
   photos: number;
   price: number;
+  originalPrice?: number; // For showing discount pricing
   features: string[];
   isCustom?: boolean;
 }

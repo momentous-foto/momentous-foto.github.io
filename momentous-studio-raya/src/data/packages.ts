@@ -1,27 +1,43 @@
 import { Package } from "@/types/booking";
 
 const SLAY_PRICE_CUTOFF = new Date(2026, 1, 7, 0, 0, 0);
-const BIRTHDAY_PROMO_DATE = new Date(2026, 1, 27, 0, 0, 0); // Feb 27, 2026 - Photographer's Birthday Promo! 🎉
+const CLEARANCE_SALE_START = new Date(2026, 1, 15, 0, 0, 0); // Feb 15, 2026 - Clearance Sale Starts! 🎉
+const CLEARANCE_SALE_END = new Date(2026, 1, 27, 23, 59, 59); // Feb 27, 2026 - Last Day!
 
 const getSlayPackagePrice = (now: Date = new Date()): number => {
-  // Birthday promo: RM129 on Feb 27, 2026
-  if (now.toDateString() === BIRTHDAY_PROMO_DATE.toDateString()) {
+  // Clearance Sale: RM129 from Feb 15 - Feb 27, 2026
+  if (now >= CLEARANCE_SALE_START && now <= CLEARANCE_SALE_END) {
     return 129;
   }
   return now >= SLAY_PRICE_CUTOFF ? 149 : 99;
 }
 
-export const getNextSlayPriceChange = (now: Date = new Date()): Date | null =>
-  now < SLAY_PRICE_CUTOFF ? SLAY_PRICE_CUTOFF : null;
+export const isClearanceSale = (now: Date = new Date()): boolean => {
+  return now >= CLEARANCE_SALE_START && now <= CLEARANCE_SALE_END;
+}
+
+export const getClearanceSaleEnd = (): Date => CLEARANCE_SALE_END;
+
+export const getNextSlayPriceChange = (now: Date = new Date()): Date | null => {
+  // If currently in clearance sale, next change is when sale ends (price goes back to RM149)
+  if (isClearanceSale(now)) {
+    return CLEARANCE_SALE_END;
+  }
+  // Otherwise, no scheduled price changes
+  return null;
+}
 
 export const getPackages = (now: Date = new Date()): Package[] => [
   {
     id: "slay",
     name: "Slay Package",
-    description: "Classic outdoor photoshoot at Bukit Lagong, Batu Caves with natural nature setting and Malay classic style.",
+    description: isClearanceSale(now) 
+      ? "🔥 CLEARANCE SALE! Classic outdoor photoshoot at Bukit Lagong, Batu Caves with natural nature setting and Malay classic style. Limited time offer until 27 Feb!" 
+      : "Classic outdoor photoshoot at Bukit Lagong, Batu Caves with natural nature setting and Malay classic style.",
     duration: "15 minutes",
     photos: 10,
     price: getSlayPackagePrice(now),
+    originalPrice: isClearanceSale(now) ? 149 : undefined,
     features: [
       "Maximum 1-4 persons (Additional RM10 per person)",
       "Children below 6 years old: Free",
@@ -41,6 +57,7 @@ export const availableDates = [
   // February 2026
   new Date(2026, 1, 21), // 21/2/2026
   new Date(2026, 1, 22), // 22/2/2026
+  new Date(2026, 1, 27), // 27/2/2026 - NEW SLOT OPENED!
   new Date(2026, 1, 28), // 28/2/2026
   // March 2026
   new Date(2026, 2, 1),  // 1/3/2026
@@ -106,6 +123,7 @@ export const fullExtendedTimeSlots = [
 export const mediumExtendedHourDates = [
   new Date(2026, 1, 21).toDateString(), // 21/2/2026
   new Date(2026, 1, 22).toDateString(), // 22/2/2026
+  new Date(2026, 1, 27).toDateString(), // 27/2/2026
   new Date(2026, 1, 28).toDateString(), // 28/2/2026
   new Date(2026, 2, 1).toDateString(),  // 1/3/2026
   new Date(2026, 2, 7).toDateString(),  // 7/3/2026
