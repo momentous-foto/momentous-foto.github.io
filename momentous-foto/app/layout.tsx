@@ -15,42 +15,9 @@ const inter = Inter({
 const baseUrl = 'https://momentous-foto.github.io';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(baseUrl),
-  title: {
-    default: 'Momentous Foto | Professional Wedding Photographer in Kuala Lumpur Malaysia',
-    template: '%s | Momentous Foto',
-  },
-  description: 'Award-winning wedding & event photographer in Kuala Lumpur, Malaysia. Specializing in wedding photography, pre-wedding shoots, maternity, and convocation with unique blacky/fade grading aesthetic since 2021. Book your session now!',
-  keywords: [
-    'wedding photographer Malaysia',
-    'wedding photographer Kuala Lumpur',
-    'pre-wedding photographer KL',
-    'maternity photographer Malaysia',
-    'convocation photographer',
-    'event photographer Malaysia',
-    'professional photographer KL',
-    'Momentous Foto',
-    'wedding photography Malaysia',
-    'Malaysia wedding photographer',
-    'KL photographer',
-    'Selangor wedding photographer',
-    'best wedding photographer Malaysia',
-    'affordable wedding photographer KL',
-  ],
-  authors: [{ name: 'Momentous Foto' }],
-  creator: 'Momentous Foto',
-  publisher: 'Momentous Foto',
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
+  title: 'Momentous Foto - Photography Portfolio',
+  description: 'Momentous Foto is about capturing moments as they happen — real, honest, and full of feeling, preserving memories that stay with you forever.',
+  keywords: ['photography', 'wedding photography', 'event photography', 'Malaysia photographer', 'pre-wedding', 'maternity photography'],
   icons: {
     icon: '/images/logo/logo-simple.jpeg',
     apple: '/images/logo/logo-simple.jpeg',
@@ -61,7 +28,7 @@ export const metadata: Metadata = {
     url: baseUrl,
     siteName: 'Momentous Foto',
     title: 'Momentous Foto | Professional Wedding Photographer in Malaysia',
-    description: 'Professional wedding & event photographer in Kuala Lumpur, Malaysia. Capturing your precious moments with unique blacky/fade grading aesthetic since 2021.',
+    description: 'Momentous Foto is about capturing moments as they happen — real, honest, and full of feeling, preserving memories that stay with you forever.',
     images: [
       {
         url: `${baseUrl}/images/logo/logo-simple.jpeg`,
@@ -74,7 +41,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Momentous Foto | Professional Wedding Photographer',
-    description: 'Professional wedding & event photographer in Kuala Lumpur, Malaysia',
+    description: 'Momentous Foto is about capturing moments as they happen — real, honest, and full of feeling, preserving memories that stay with you forever.',
     images: [`${baseUrl}/images/logo/logo-simple.jpeg`],
     creator: '@momentousfoto',
   },

@@ -46,6 +46,7 @@ const CustomerForm = ({
           value={customerName}
           onChange={(e) => onNameChange(e.target.value)}
           className={errors.name ? "border-destructive" : ""}
+          required
         />
         {errors.name && (
           <p className="text-sm text-destructive">{errors.name}</p>
@@ -61,6 +62,7 @@ const CustomerForm = ({
           value={customerEmail}
           onChange={(e) => onEmailChange(e.target.value)}
           className={errors.email ? "border-destructive" : ""}
+          required
         />
         {errors.email && (
           <p className="text-sm text-destructive">{errors.email}</p>
@@ -76,6 +78,7 @@ const CustomerForm = ({
           value={customerPhone}
           onChange={(e) => onPhoneChange(e.target.value)}
           className={errors.phone ? "border-destructive" : ""}
+          required
         />
         {errors.phone && (
           <p className="text-sm text-destructive">{errors.phone}</p>
@@ -104,21 +107,26 @@ const CustomerForm = ({
               <h4 className="font-bold mb-2">BOOKING & TIME</h4>
               <ul className="list-disc pl-5 space-y-1">
                 <li>Time slots are on a FIRST-COME, FIRST-SERVE basis.</li>
-                <li>FULL PAYMENT is required to book your slot.</li>
-                <li>Your booking is considered confirmed once payment is made. You may reschedule only ONCE with a minimum of 7 days notice, subject to availability.</li>
-                <li>You are allocated 15 minutes per session. Please arrive at the location 5 minutes before your time slot. Late arrivals are only allowed to utilize the REMAINING TIME until the end of your slot.</li>
-                <li>NO REFUND for a no-show. Please re-book for a new session.</li>
-                <li>NO WALK-INS are allowed. All sessions are by appointment only.</li>
+                <li>A RM50 (not refundable) booking fee is required to secure your preferred date and time.</li>
+                <li>Your booking is considered CONFIRMED only after payment is made.</li>
+                <li>You may reschedule ONCE only with a minimum of 7 DAYS notice, subject to availability.</li>
+                <li>Full payment must be settled at least 1 DAY before the session.</li>
+                <li>Each session is allocated 15 MINUTES only. Please arrive at the location 10 MINUTES before your scheduled time.</li>
+                <li>Please note that late arrivals will not be given extra time. Your session will still end at the scheduled time.</li>
+                <li>If you miss your allocated time slot due to late arrival and wish to book a new slot, it will be treated as a new booking and will require full payment. Previous payments are strictly non-transferable.</li>
+                <li>NO REFUND for no-shows and cancellation. Please make a new booking for another session.</li>
+                <li>NO WALK-INS allowed. All sessions are strictly by appointment only.</li>
               </ul>
             </div>
 
             <div>
               <h4 className="font-bold mb-2">DELIVERABLES</h4>
               <ul className="list-disc pl-5 space-y-1">
-                <li>All digital soft copies will be provided on the SAME DAY.</li>
-                <li>The professionals will select 10 edited photos for the Slay Package. Requests for ADDITIONAL edited photos are RM5/photo.</li>
+                <li>All digital soft copies will be provided on the 1-2 working days.</li>
+                <li>Customer will select 10 edited photos. Requests for ADDITIONAL edited photos are RM5/photo.</li>
+                <li>Edited photos will be delivered within 7 working days after the customer has confirmed their selected images.</li>
                 <li>The Google Drive link is only valid for 7 DAYS.</li>
-                <li>Momentous Studio may request your consent to use the photos for marketing purposes, including uploading them to social media. No photos will be used without your explicit approval.</li>
+                <li>Momentous Foto Studio may request your consent to use the photos for marketing purposes, including uploading them to social media. No photos will be used without your explicit approval.</li>
               </ul>
             </div>
 
@@ -133,7 +141,6 @@ const CustomerForm = ({
                   </ul>
                 </li>
                 <li>Set design, props, and layout prepared by Momentous Studio are FIXED.</li>
-                <li>A tripod will be provided for the session. Customers may use the tripod with care.</li>
                 <li>Customers are NOT ALLOWED to move, rearrange, or remove any props, furniture, or equipment without permission from the studio team.</li>
                 <li>Any damage to studio equipment caused by misuse or negligence will be charged accordingly.</li>
                 <li>Outside props or decorations are NOT ALLOWED unless prior approval is obtained from Momentous Studio.</li>
@@ -162,12 +169,13 @@ const CustomerForm = ({
               checked={imageConsent}
               onCheckedChange={onImageConsentChange}
               className="mt-1"
+              required
             />
             <label
               htmlFor="imageConsent"
               className="text-sm font-medium leading-relaxed cursor-pointer"
             >
-              I hereby grant full and unrestricted permission to Momentous Foto to use my images and/or videos for the purposes stated above, and I agree to all terms and conditions.
+              I hereby grant full and unrestricted permission to Momentous Foto to use my images and/or videos for the purposes stated above, and I agree to all terms and conditions. *
             </label>
           </div>
           {errors.consent && (

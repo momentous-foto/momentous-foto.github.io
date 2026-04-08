@@ -14,21 +14,21 @@ const Packages = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const galleryImages = useMemo(() => [
-    'IMG_6827.JPG.jpeg',
-    'IMG_6829.JPG.jpeg',
-    'IMG_6830.JPG.jpeg',
-    'IMG_6831.JPG.jpeg',
-    'IMG_6832.JPG.jpeg',
-    'IMG_6833.JPG.jpeg',
-    'IMG_6834.JPG.jpeg',
-    'IMG_6923.JPG.jpeg',
-    'IMG_6924.JPG.jpeg',
-    'IMG_6925.JPG.jpeg',
-    'IMG_6926.JPG.jpeg',
-    'IMG_6928.JPG.jpeg',
-    'IMG_6929.JPG.jpeg',
-    'IMG_6930.JPG.jpeg',
-    'IMG_6931.JPG.jpeg',
+    'IMG_6827.JPG.webp',
+    'IMG_6829.JPG.webp',
+    'IMG_6830.JPG.webp',
+    'IMG_6831.JPG.webp',
+    'IMG_6832.JPG.webp',
+    'IMG_6833.JPG.webp',
+    'IMG_6834.JPG.webp',
+    'IMG_6923.JPG.webp',
+    'IMG_6924.JPG.webp',
+    'IMG_6925.JPG.webp',
+    'IMG_6926.JPG.webp',
+    'IMG_6928.JPG.webp',
+    'IMG_6929.JPG.webp',
+    'IMG_6930.JPG.webp',
+    'IMG_6931.JPG.webp',
   ], []);
 
   const galleryImagePaths = useMemo(
