@@ -1,21 +1,21 @@
 import { getImagePath } from "@/utils/imagePath";
 
 const samplePhotos = [
-  "images/sample/IMG_6827.JPG.jpeg",
-  "images/sample/IMG_6829.JPG.jpeg",
-  "images/sample/IMG_6830.JPG.jpeg",
-  "images/sample/IMG_6831.JPG.jpeg",
-  "images/sample/IMG_6832.JPG.jpeg",
-  "images/sample/IMG_6833.JPG.jpeg",
-  "images/sample/IMG_6834.JPG.jpeg",
-  "images/sample/IMG_6923.JPG.jpeg",
-  "images/sample/IMG_6924.JPG.jpeg",
-  "images/sample/IMG_6925.JPG.jpeg",
-  "images/sample/IMG_6926.JPG.jpeg",
-  "images/sample/IMG_6928.JPG.jpeg",
-  "images/sample/IMG_6929.JPG.jpeg",
-  "images/sample/IMG_6930.JPG.jpeg",
-  "images/sample/IMG_6931.JPG.jpeg",
+  "images/sample/IMG_6827.JPG.webp",
+  "images/sample/IMG_6829.JPG.webp",
+  "images/sample/IMG_6830.JPG.webp",
+  "images/sample/IMG_6831.JPG.webp",
+  "images/sample/IMG_6832.JPG.webp",
+  "images/sample/IMG_6833.JPG.webp",
+  "images/sample/IMG_6834.JPG.webp",
+  "images/sample/IMG_6923.JPG.webp",
+  "images/sample/IMG_6924.JPG.webp",
+  "images/sample/IMG_6925.JPG.webp",
+  "images/sample/IMG_6926.JPG.webp",
+  "images/sample/IMG_6928.JPG.webp",
+  "images/sample/IMG_6929.JPG.webp",
+  "images/sample/IMG_6930.JPG.webp",
+  "images/sample/IMG_6931.JPG.webp",
 ];
 
 const Closed = () => {
@@ -46,7 +46,7 @@ const Closed = () => {
         {/* Main hero image */}
         <div className="rounded-2xl overflow-hidden shadow-2xl max-w-sm w-full aspect-square mb-8">
           <img
-            src={getImagePath("images/sample/main.jpeg")}
+            src={getImagePath("images/sample/main.webp")}
             alt="Laman Raya Setup"
             loading="eager"
             className="w-full h-full object-cover object-bottom"
@@ -87,59 +87,6 @@ const Closed = () => {
           >
             Threads
           </a>
-        </div>
-      </section>
-
-      {/* ── Studio Gallery (bento) ── */}
-      <section className="px-6 pb-12 max-w-5xl mx-auto">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold tracking-wide mb-2">
-            Our Studio
-          </h2>
-          <p className="text-[#C49A6C] text-sm italic">A glimpse of our studio setup</p>
-        </div>
-
-        <div className="grid grid-cols-12 grid-rows-12 gap-3 h-[500px] md:h-[650px]">
-          <div className="col-span-12 md:col-span-7 row-span-7 md:row-span-8 rounded-2xl overflow-hidden shadow-lg group">
-            <img
-              src={getImagePath("images/1.jpeg")}
-              alt="Studio setup"
-              loading="eager"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-          <div className="col-span-6 md:col-span-5 row-span-5 md:row-span-4 rounded-2xl overflow-hidden shadow-lg group">
-            <img
-              src={getImagePath("images/2.jpeg")}
-              alt="Studio setup"
-              loading="lazy"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-          <div className="col-span-6 md:col-span-5 row-span-4 rounded-2xl overflow-hidden shadow-lg group">
-            <img
-              src={getImagePath("images/3.jpeg")}
-              alt="Studio setup"
-              loading="lazy"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-          <div className="col-span-6 md:col-span-4 row-span-5 md:row-span-4 rounded-2xl overflow-hidden shadow-lg group">
-            <img
-              src={getImagePath("images/4.jpeg")}
-              alt="Studio setup"
-              loading="lazy"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-          <div className="col-span-6 md:col-span-8 row-span-3 md:row-span-4 rounded-2xl overflow-hidden shadow-lg group">
-            <img
-              src={getImagePath("images/5.jpeg")}
-              alt="Studio setup"
-              loading="lazy"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-          </div>
         </div>
       </section>
 
