@@ -116,7 +116,7 @@ const Closed = () => {
       {/* ── Footer ── */}
       <footer className="border-t border-[#fcfcfc]/10 py-8 text-center px-6">
         <p className="text-[#fcfcfc]/50 text-xs mb-1">
-          © 2025 Momentous Foto · All rights reserved
+          © 2026 Momentous Foto · All rights reserved
         </p>
         <p className="text-[#fcfcfc]/30 text-xs">
           momentousfotostudio@gmail.com
