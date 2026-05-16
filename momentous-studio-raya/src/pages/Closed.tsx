@@ -40,7 +40,7 @@ const Closed = () => {
         {/* Closed badge */}
         <span className="inline-flex items-center gap-2 bg-[#C49A6C]/20 border border-[#C49A6C]/40 text-[#C49A6C] text-xs font-semibold tracking-widest uppercase px-5 py-2 rounded-full mb-8">
           <span className="w-1.5 h-1.5 rounded-full bg-[#C49A6C] inline-block" />
-          Musim Raya 2025 · Telah Berakhir
+          Musim Raya 2026 · Telah Berakhir
         </span>
 
         {/* Main hero image */}
@@ -96,7 +96,7 @@ const Closed = () => {
           <h2 className="text-2xl md:text-3xl font-bold tracking-wide mb-2">
             Captured Memories
           </h2>
-          <p className="text-[#C49A6C] text-sm italic">Sessions from Raya 2025</p>
+          <p className="text-[#C49A6C] text-sm italic">Sessions from Raya 2026</p>
         </div>
 
         <div className="columns-2 md:columns-3 lg:columns-4 gap-3 space-y-3">
@@ -104,7 +104,7 @@ const Closed = () => {
             <div key={i} className="break-inside-avoid rounded-xl overflow-hidden shadow-md group">
               <img
                 src={getImagePath(src)}
-                alt={`Raya 2025 session ${i + 1}`}
+                alt={`Raya 2026 session ${i + 1}`}
                 loading="lazy"
                 className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
               />
